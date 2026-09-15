@@ -1,0 +1,21 @@
+# Runtime / generated
+__pycache__/
+*.pyc
+*.sqlite3
+*.db
+*.log
+
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Heavy deployment artifacts
+/downloads/**/*.zip
+/projects/crec/play/images/catalog/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
