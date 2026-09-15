@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "projects": [
+    {
+      "slug": "morskoy-boy",
+      "number": "01",
+      "title": "Морской бой",
+      "type": "game",
+      "category": "games",
+      "status": "beta",
+      "version": "1.4.2",
+      "featured": true,
+      "summary": "Тактическая браузерная игра с псевдо-3D кораблями, анимированным морем, офлайн-режимом и LAN/WebSocket.",
+      "onlineUrl": "/games/morskoy-boy/play/",
+      "detailUrl": "/games/morskoy-boy/",
+      "downloadUrl": "/downloads/morskoy-boy/latest/Морской-бой-latest.zip",
+      "image": "/assets/images/morskoy-boy.webp"
+    },
+    {
+      "slug": "dom-svistka-3d",
+      "number": "02",
+      "title": "Дом Свистка 3D",
+      "type": "project",
+      "category": "3d",
+      "status": "alpha",
+      "version": "prototype",
+      "featured": false,
+      "summary": "Интерактивная 3D-модель дома с персонажем, фасадом, измерениями и настройками сцены.",
+      "onlineUrl": "/projects/dom-svistka-3d/play/",
+      "detailUrl": "/projects/dom-svistka-3d/",
+      "downloadUrl": "/downloads/dom-svistka-3d/latest/Дом-Свистка-3D.zip",
+      "image": "/assets/images/projects/dom-svistka-3d.svg"
+    },
+    {
+      "slug": "crec",
+      "number": "03",
+      "title": "Сайт КРЭК",
+      "type": "website",
+      "category": "websites",
+      "status": "beta",
+      "version": "server-ready",
+      "featured": false,
+      "summary": "Оптимизированная серверная версия каталога КРЭК с 8 098 товарами, PWA и отдельными ресурсами.",
+      "onlineUrl": "/projects/crec/play/",
+      "detailUrl": "/projects/crec/",
+      "downloadUrl": "/downloads/crec/latest/CREC-server-ready-Timeweb-file-optimized.zip",
+      "image": "/assets/images/projects/crec.svg"
+    },
+    {
+      "slug": "tetris",
+      "number": "04",
+      "title": "Тетрис",
+      "type": "game",
+      "category": "games",
+      "status": "alpha",
+      "version": "level-1",
+      "featured": false,
+      "summary": "Браузерный Тетрис: первый уровень и бесконечный режим.",
+      "onlineUrl": "/games/tetris/play/",
+      "detailUrl": "/games/tetris/",
+      "downloadUrl": "/downloads/tetris/latest/Тетрис-level-1.zip",
+      "image": "/assets/images/projects/tetris.svg"
+    },
+    {
+      "slug": "pixel-platformer",
+      "number": "05",
+      "title": "Пиксельный платформер",
+      "type": "game",
+      "category": "games",
+      "status": "archived",
+      "version": null,
+      "featured": false,
+      "summary": "Архивный 2D-платформер с персонажем, уровнями, врагами и боссами. Исходная сборка сейчас не найдена.",
+      "onlineUrl": null,
+      "detailUrl": "/games/pixel-platformer/",
+      "downloadUrl": null,
+      "image": "/assets/images/projects/pixel-platformer.svg"
+    }
+  ]
+}
