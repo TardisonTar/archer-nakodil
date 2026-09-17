@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "repository": "TardisonTar/archer-nakodil",
+  "phase": "migration",
+  "canonical_base": "0.4.0.0",
+  "canonical_base_verified": true,
+  "github_content_baseline": "legacy-2.0-partial",
+  "source_sync": "pending",
+  "production_deploy_enabled": false,
+  "note": "GitHub workflow is configured safely, but repository source must be synchronized with canonical BASE 0.4.0.0 before UPDATE artifacts or production deployment are enabled."
+}
