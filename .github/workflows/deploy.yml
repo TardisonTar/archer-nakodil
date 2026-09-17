@@ -1,60 +1,105 @@
 name: Deploy Archer Nakodil
+
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type DEPLOY to confirm production deployment from main'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
 concurrency:
   group: archer-nakodil-production
   cancel-in-progress: false
+
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          node-version: '22'
-      - uses: actions/setup-python@v5
+          node-version: '24'
+          package-manager-cache: false
+      - uses: actions/setup-python@v7
         with:
-          python-version: '3.12'
-      - name: Validate JavaScript
+          python-version: '3.13'
+
+      - name: Production safety gate
+        env:
+          CONFIRM: ${{ inputs.confirm }}
         run: |
-          find assets games -name '*.js' -print0 | xargs -0 -r -n1 node --check
+          test "$GITHUB_REF" = 'refs/heads/main' || { echo 'Deploy is allowed only from main'; exit 1; }
+          test "$CONFIRM" = 'DEPLOY' || { echo 'Confirmation must be exactly DEPLOY'; exit 1; }
+          python - <<'PY'
+          import json
+          data=json.load(open('REPOSITORY-STATUS.json', encoding='utf-8'))
+          if data.get('source_sync') != 'complete':
+              raise SystemExit('Repository source_sync is not complete')
+          if data.get('production_deploy_enabled') is not True:
+              raise SystemExit('Production deployment is disabled in REPOSITORY-STATUS.json')
+          print('Production gate: PASS')
+          PY
+
+      - name: Validate JavaScript
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r -d '' file; do
+            node --check "$file"
+          done < <(find . -type f -name '*.js' -not -path './.git/*' -print0)
+
       - name: Validate JSON
         run: |
           python - <<'PY'
           from pathlib import Path
           import json
           for p in Path('.').rglob('*.json'):
+              if '.git' in p.parts or 'release-out' in p.parts:
+                  continue
               json.loads(p.read_text(encoding='utf-8'))
-              print('OK',p)
           PY
-      - name: Check internal links
-        run: python scripts/check-site.py
+
+      - name: Strict local-link audit
+        run: python scripts/check-repo.py --strict
+
   deploy:
     needs: validate
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Configure SSH
         env:
           SSH_KEY: ${{ secrets.ARCHER_SSH_KEY }}
           SSH_HOST: ${{ secrets.ARCHER_HOST }}
         run: |
+          : "${SSH_KEY:?ARCHER_SSH_KEY secret is missing}"
+          : "${SSH_HOST:?ARCHER_HOST secret is missing}"
           install -m 700 -d ~/.ssh
           printf '%s\n' "$SSH_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "$SSH_HOST" >> ~/.ssh/known_hosts
-      - name: Deploy files
+
+      - name: Deploy tracked web files
         env:
           SSH_HOST: ${{ secrets.ARCHER_HOST }}
           SSH_USER: ${{ secrets.ARCHER_USER }}
           WEBROOT: ${{ secrets.ARCHER_WEBROOT }}
         run: |
+          : "${SSH_USER:?ARCHER_USER secret is missing}"
+          : "${WEBROOT:?ARCHER_WEBROOT secret is missing}"
           rsync -az --checksum \
-            --exclude '.git/' --exclude '.github/' --exclude 'release-out/' \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude 'scripts/' \
+            --exclude 'release-out/' \
+            --exclude 'GITHUB-WORKFLOW.md' \
+            --exclude 'REPOSITORY-STATUS.json' \
             ./ "$SSH_USER@$SSH_HOST:$WEBROOT/"
+
       - name: Reload nginx safely
         env:
           SSH_HOST: ${{ secrets.ARCHER_HOST }}
