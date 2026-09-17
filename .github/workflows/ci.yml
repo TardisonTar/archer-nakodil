@@ -1,0 +1,91 @@
+name: Validate and Build UPDATE
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches:
+      - 'sync/**'
+      - 'portal/**'
+      - 'game/**'
+      - 'crec/**'
+      - '3d/**'
+      - 'infra/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+
+      - name: Validate JavaScript
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r -d '' file; do
+            node --check "$file"
+          done < <(find . -type f -name '*.js' -not -path './.git/*' -print0)
+
+      - name: Validate JSON
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          for p in Path('.').rglob('*.json'):
+              if '.git' in p.parts or 'release-out' in p.parts:
+                  continue
+              json.loads(p.read_text(encoding='utf-8'))
+              print('OK', p)
+          PY
+
+      - name: Audit local references
+        run: python scripts/check-repo.py
+
+      - name: Read repository migration status
+        id: repo_status
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          data=json.load(open('REPOSITORY-STATUS.json', encoding='utf-8'))
+          print('synced=' + ('true' if data.get('source_sync') == 'complete' else 'false'))
+          PY
+
+      - name: Fetch PR endpoints
+        if: github.event_name == 'pull_request' && steps.repo_status.outputs.synced == 'true'
+        run: |
+          git fetch --no-tags origin "${{ github.event.pull_request.base.sha }}" --depth=1
+          git fetch --no-tags origin "${{ github.event.pull_request.head.sha }}" --depth=1
+
+      - name: Build UPDATE ZIP
+        if: github.event_name == 'pull_request' && steps.repo_status.outputs.synced == 'true'
+        run: |
+          python scripts/build-update.py \
+            --base "${{ github.event.pull_request.base.sha }}" \
+            --head "${{ github.event.pull_request.head.sha }}" \
+            --output "release-out/Archer-Nakodil-PR-${{ github.event.pull_request.number }}-UPDATE.zip"
+
+      - name: Upload UPDATE artifact
+        if: github.event_name == 'pull_request' && steps.repo_status.outputs.synced == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: Archer-Nakodil-PR-${{ github.event.pull_request.number }}-UPDATE
+          path: release-out/*.zip
+          if-no-files-found: error
+          retention-days: 30
