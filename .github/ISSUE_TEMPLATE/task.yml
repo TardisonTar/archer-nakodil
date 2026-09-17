@@ -1,0 +1,53 @@
+name: Archer Nakodil task
+description: Create a scoped development task for Archer Nakodil
+title: "[TASK] "
+body:
+  - type: input
+    id: task_id
+    attributes:
+      label: Task ID
+      placeholder: PORTAL-20260917-001
+    validations:
+      required: true
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - PORTAL
+        - GAME
+        - CREC
+        - 3D
+        - INFRA / GitHub
+        - IDEAS / concept only
+    validations:
+      required: true
+  - type: input
+    id: base
+    attributes:
+      label: BASE version
+      description: Last installed and user-confirmed version used as the task base.
+      placeholder: 0.4.0.0
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: Target version
+      placeholder: 0.4.0.1
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Exact scope
+      description: What must change. Do not expand beyond this scope.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance checks
+      description: Concrete checks that must pass before the task is READY.
+    validations:
+      required: true
