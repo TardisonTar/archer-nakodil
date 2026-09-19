@@ -1,0 +1,43 @@
+/* CREC v1.1.1 — product image magnifier hotfix.
+   Layout-neutral: the lens is fixed to <body> and never changes card geometry. */
+.crec-magnifier-lens {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 288px;
+  height: 288px;
+  border: 2px solid rgba(8, 28, 59, .82);
+  border-radius: 50%;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  box-shadow: 0 10px 32px rgba(8, 28, 59, .22), inset 0 0 0 1px rgba(255,255,255,.75);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 2147483000;
+  opacity: 0;
+  visibility: hidden;
+  will-change: left, top, background-position;
+  transition: opacity .08s linear, visibility .08s linear;
+}
+
+.crec-magnifier-lens.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .product-card .product-picture img,
+  .product-card .product-media img,
+  .product-card img[data-product-image],
+  .product-card img {
+    cursor: zoom-in;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .crec-magnifier-lens { display: none !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crec-magnifier-lens { transition: none; }
+}

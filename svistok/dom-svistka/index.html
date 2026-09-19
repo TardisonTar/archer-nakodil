@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Дом Свистка 3D</title>
+<link rel="stylesheet" href="assets/css/app.css?v=0.0.9.0">
+<link rel="stylesheet" href="assets/css/studio.css?v=0.0.9.0">
+<meta name="description" content="Интерактивная 3D-модель здания.">
+</head><body><h1>3D-модель здания</h1><p class="intro">Перетаскивание — вращение · колёсико или жест двумя пальцами — масштаб · нажатие на зону — выделение</p>
+<div id="building-model">
+  <div class="viz-controls" role="group" aria-label="Уровень здания">
+    <button class="btn" type="button" data-floor="ground" aria-pressed="false">1 этаж</button>
+    <button class="btn" type="button" data-floor="basement" aria-pressed="false">Цоколь / подвал</button>
+    <button class="btn" type="button" data-floor="upper" aria-pressed="false">2 этаж / крыша</button>
+    <button class="btn" type="button" data-floor="both" aria-pressed="true">Единая конструкция</button>
+    <label class="form-check"><input class="form-check-input" id="bm-top" type="checkbox"><span class="form-check-label">Сверху</span></label>
+    <label class="form-check"><input class="form-check-input" id="bm-full" type="checkbox" checked><span class="form-check-label">Полные стены</span></label>
+    <label class="form-check" id="bm-explode-field"><input class="form-check-input" id="bm-explode" type="checkbox"><span class="form-check-label">Разнести этажи</span></label>
+  </div>
+  <div class="viz-controls" role="group" aria-label="Обзор и внешний вид">
+    <button class="btn" type="button" id="bm-fullscreen" aria-pressed="false" aria-controls="building-model">На весь экран</button>
+    <button class="btn" type="button" id="bm-camera" aria-pressed="false" aria-controls="bm-free-controls">Открепить камеру</button>
+    <button class="btn" type="button" id="bm-walk" aria-pressed="false" aria-controls="bm-free-controls">Прогулка с персонажем</button>
+    <button class="btn" type="button" id="bm-foundation-toggle" aria-pressed="true">Скрыть фундамент</button>
+    <button class="btn" type="button" id="bm-doors-toggle" aria-pressed="true">Скрыть двери</button>
+    <button class="btn" type="button" id="bm-wall-areas" aria-controls="bm-wall-labels" aria-pressed="false">Показать площади стен</button>
+    <span class="text-small" id="bm-wall-area-note" hidden>м² по модели · без проёмов · полная высота</span>
+    <button class="btn" type="button" id="bm-basement-toggle" aria-pressed="true">Скрыть цокольный этаж</button>
+    <button class="btn" type="button" id="bm-terrain-toggle" aria-pressed="true">Скрыть землю · 5 м вокруг</button>
+    <div class="viz-controls" role="group" aria-label="Цвет земли">
+      <label class="form-label">Цвет земли<input class="form-control form-control-color" id="bm-ground-color" type="color" value="#789e58"></label>
+      <label class="form-label">Оттенок <output id="bm-ground-hue-value">92°</output><span id="bm-ground-palette" aria-hidden="true"></span><input class="form-range" id="bm-ground-hue" type="range" min="0" max="360" value="92" step="1"></label>
+    </div>
+    <div class="viz-controls" role="group" aria-label="Вентилируемый фасад">
+      <button class="btn" type="button" id="bm-facade-toggle" aria-pressed="true">Скрыть вентфасад</button>
+      <label class="form-label">Цвет фасада<input class="form-control form-control-color" id="bm-facade-color" type="color" value="#b8bec4"></label>
+      <label class="form-label">Размер плиты <output id="bm-panel-size-value" class="tabular-nums">600 × 600 мм</output><input class="form-range" id="bm-panel-size" type="range" min="300" max="1200" step="50" value="600"></label>
+    </div>
+  </div>
+  <div class="text-small" id="bm-grade-note">Условные уровни 3D-модели</div>
+  <div id="bm-stage" role="img" aria-label="Интерактивная трёхмерная модель здания">
+    <div id="bm-labels" aria-hidden="true"></div>
+    <div id="bm-wall-labels" role="group" aria-label="Площади наружных стен по модели"></div>
+    <div id="bm-loading" class="text-muted">Построение модели…</div>
+  </div>
+  <div class="viz-controls">
+    <button class="btn btn-ghost" id="bm-left" type="button" aria-label="Повернуть влево">↶</button>
+    <button class="btn btn-ghost" id="bm-right" type="button" aria-label="Повернуть вправо">↷</button>
+    <button class="btn btn-ghost" id="bm-plus" type="button" aria-label="Приблизить">＋</button>
+    <button class="btn btn-ghost" id="bm-minus" type="button" aria-label="Отдалить">−</button>
+    <label class="form-label">Зона<select class="form-select" id="bm-room" aria-label="Выбрать зону"></select></label>
+    <div class="viz-controls" id="bm-free-controls" role="group" aria-label="Перемещение свободной камеры" hidden>
+      <button class="btn" type="button" id="bm-forward">Вперёд</button>
+      <button class="btn" type="button" id="bm-backward">Назад</button>
+      <button class="btn" type="button" id="bm-strafe-left">Влево</button>
+      <button class="btn" type="button" id="bm-strafe-right">Вправо</button>
+      <button class="btn" type="button" id="bm-up">Выше</button>
+      <button class="btn" type="button" id="bm-down">Ниже</button>
+      <span class="text-small" id="bm-movement-help">Мышь — осмотр · правая кнопка — сдвиг · колёсико / WASD — движение · Q/E — ниже/выше · Shift — быстрее. На телефоне: один палец — осмотр, два — сдвиг и приближение.</span>
+    </div>
+  </div>
+  <div class="text-small" id="bm-info" aria-live="polite">Единая конструкция</div>
+  <div class="text-small" id="bm-screen-status" role="status" hidden></div>
+</div>
+
+<script src="assets/vendor/three.min.js?v=0.0.9.0"></script>
+<script src="assets/js/model.js?v=0.0.9.0"></script>
+<script src="assets/js/studio.js?v=0.0.9.0"></script>
+<script>window.ARCHER_PROJECT="dom-svistka-3d";</script>
+
+</body></html>

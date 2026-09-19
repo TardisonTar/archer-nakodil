@@ -1,0 +1,170 @@
+/* CREC theme + hero cleanup — CREC-THEME-SLIDER-CLEANUP-20260915 */
+html{color-scheme:light}
+html[data-theme="dark"]{color-scheme:dark;--text:#edf2f8;--muted:#9aa7b8;--line:#2b3544;--soft:#171e29;--green:#72d28b;--navy:#9cc6ff}
+
+.theme-switch-wrap{display:flex;align-items:center;flex:0 0 auto}
+.theme-toggle{display:inline-flex;align-items:center;gap:7px;min-height:28px;padding:2px 7px;border:1px solid #dce1e8;border-radius:999px;background:#fff;color:#667184;font-size:10px;line-height:1;white-space:nowrap;transition:background .2s,border-color .2s,color .2s}
+.theme-toggle:hover{border-color:#b8c2d0;color:#172a47}
+.theme-toggle:focus-visible{outline:2px solid #315f9e;outline-offset:2px}
+.theme-toggle-track{position:relative;width:34px;height:18px;border-radius:999px;background:#dce2ea;box-shadow:inset 0 0 0 1px #cbd3de;flex:none;transition:background .2s,box-shadow .2s}
+.theme-toggle-thumb{position:absolute;left:2px;top:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 4px #081c3b33;transition:transform .2s}
+.theme-toggle[aria-checked="true"] .theme-toggle-thumb{transform:translateX(16px)}
+.theme-toggle[aria-checked="true"] .theme-toggle-track{background:#244e80;box-shadow:inset 0 0 0 1px #315f9e}
+.theme-toggle-label{transition:color .2s,opacity .2s}
+.theme-toggle[aria-checked="false"] .theme-toggle-label-light,.theme-toggle[aria-checked="true"] .theme-toggle-label-dark{color:var(--text);font-weight:600}
+.theme-toggle[aria-checked="false"] .theme-toggle-label-dark,.theme-toggle[aria-checked="true"] .theme-toggle-label-light{opacity:.62}
+
+/* The four hero slides keep their timing/text controls, but use CSS-only decoration instead of image assets. */
+.hero{position:relative}
+.hero-inner{isolation:isolate}
+.hero-art.hero-art-clean{right:0;top:0;width:54%;height:100%;mask-image:linear-gradient(to right,transparent,#000 28%);overflow:hidden;opacity:.96}
+.hero-art-clean .hero-slide{inset:0;background:linear-gradient(135deg,var(--hero-a),var(--hero-b));}
+.hero-art-clean .hero-slide::before,.hero-art-clean .hero-slide::after{content:"";position:absolute;border-radius:50%;filter:blur(2px);transition:transform .8s ease,opacity .65s ease}
+.hero-art-clean .hero-slide::before{width:48%;aspect-ratio:1;right:9%;top:7%;background:radial-gradient(circle at 35% 35%,var(--hero-glow),transparent 68%);border:1px solid var(--hero-line);box-shadow:0 0 90px var(--hero-shadow)}
+.hero-art-clean .hero-slide::after{width:34%;aspect-ratio:1;right:36%;bottom:-7%;background:radial-gradient(circle at 50% 50%,var(--hero-glow-2),transparent 70%);border:1px solid var(--hero-line);box-shadow:0 0 70px var(--hero-shadow)}
+.hero-art-clean .hero-slide.is-active::before{transform:translate3d(-10px,7px,0) scale(1.05)}
+.hero-art-clean .hero-slide.is-active::after{transform:translate3d(12px,-8px,0) scale(1.06)}
+.hero-art-clean [data-hero-slide="0"]{--hero-a:#f3f5f9;--hero-b:#e5eaf2;--hero-glow:#e6001228;--hero-glow-2:#17375f1f;--hero-line:#d7dce5;--hero-shadow:#0b24401a}
+.hero-art-clean [data-hero-slide="1"]{--hero-a:#f3f6f8;--hero-b:#e4ebf0;--hero-glow:#245f9a27;--hero-glow-2:#e600121b;--hero-line:#d6dfe8;--hero-shadow:#17375f1b}
+.hero-art-clean [data-hero-slide="2"]{--hero-a:#f5f5f7;--hero-b:#e9edf2;--hero-glow:#c88f2424;--hero-glow-2:#244f8521;--hero-line:#d9dee5;--hero-shadow:#7b5f1914}
+.hero-art-clean [data-hero-slide="3"]{--hero-a:#f4f4f6;--hero-b:#e5e8ed;--hero-glow:#c23a4326;--hero-glow-2:#455f7f20;--hero-line:#d8dce2;--hero-shadow:#6f202014}
+.hero-copy{width:66%;max-width:720px}
+.benefits{width:92%;padding-right:150px}
+
+html[data-theme="dark"] body{background:#0d1219;color:var(--text)}
+html[data-theme="dark"] .topbar{background:#090e14;color:#bac4d1}
+html[data-theme="dark"] .header{background:#10161f;border-color:var(--line)}
+html[data-theme="dark"] .navigation{background:#10161f;border-color:var(--line)}
+html[data-theme="dark"] .top-contacts svg,html[data-theme="dark"] .header-action>i>svg,html[data-theme="dark"] .cart-icon svg{color:#aebbd0}
+html[data-theme="dark"] .search,html[data-theme="dark"] .search select{background:#151d28;border-color:#303b4b;color:#dce5f1}
+html[data-theme="dark"] .search input{color:#edf2f8}
+html[data-theme="dark"] .search input::placeholder{color:#8290a3}
+html[data-theme="dark"] .theme-toggle{background:#111923;border-color:#334052;color:#aeb8c7}
+html[data-theme="dark"] .theme-toggle:hover{border-color:#53657d;color:#f2f6fb}
+html[data-theme="dark"] .theme-toggle-track{background:#293544;box-shadow:inset 0 0 0 1px #3c4a5d}
+html[data-theme="dark"] .theme-toggle[aria-checked="true"] .theme-toggle-track{background:#315f9e;box-shadow:inset 0 0 0 1px #5685c4}
+html[data-theme="dark"] .theme-toggle-thumb{background:#f6f9fc;box-shadow:0 1px 5px #0008}
+html[data-theme="dark"] .navy{background:#17375f;color:#fff}
+html[data-theme="dark"] .navy:hover{background:#214a79}
+html[data-theme="dark"] .outline{border-color:#576579;color:#e8eef7}
+html[data-theme="dark"] .outline:hover{background:#1a2431}
+html[data-theme="dark"] .catalog-menu{background:#121a24;border-color:#303b4b;box-shadow:0 18px 48px #0008}
+html[data-theme="dark"] .catalog-menu button:hover{background:#1d2735}
+html[data-theme="dark"] .hero{background:#141b25}
+html[data-theme="dark"] .hero-art-clean [data-hero-slide="0"]{--hero-a:#141b25;--hero-b:#111822;--hero-glow:#e6001238;--hero-glow-2:#3f79bc35;--hero-line:#2e3b4d;--hero-shadow:#0006}
+html[data-theme="dark"] .hero-art-clean [data-hero-slide="1"]{--hero-a:#141b25;--hero-b:#101923;--hero-glow:#3b80c94a;--hero-glow-2:#e600122c;--hero-line:#2d3b4e;--hero-shadow:#0006}
+html[data-theme="dark"] .hero-art-clean [data-hero-slide="2"]{--hero-a:#171b22;--hero-b:#111821;--hero-glow:#d39b3841;--hero-glow-2:#356ca93a;--hero-line:#343c49;--hero-shadow:#0006}
+html[data-theme="dark"] .hero-art-clean [data-hero-slide="3"]{--hero-a:#171a21;--hero-b:#121821;--hero-glow:#d24c5540;--hero-glow-2:#57779f34;--hero-line:#373b45;--hero-shadow:#0006}
+html[data-theme="dark"] .benefits svg,html[data-theme="dark"] .slider-controls{color:#9caabd}
+html[data-theme="dark"] .round{background:#1b2532;color:#dbe8fa;border:1px solid #334154}
+html[data-theme="dark"] .round:hover{box-shadow:0 4px 18px #0006;background:#222f40}
+html[data-theme="dark"] .category-card{background:linear-gradient(130deg,#151d28,#121923);border-color:#2c3746}
+html[data-theme="dark"] .category-card:hover{border-color:#46566c;box-shadow:0 8px 24px #0005}
+html[data-theme="dark"] .category-copy>span,html[data-theme="dark"] .product-description,html[data-theme="dark"] .manufacturer,html[data-theme="dark"] .hot-card-copy>span,html[data-theme="dark"] .detail-brand,html[data-theme="dark"] .brands-intro,html[data-theme="dark"] .panel p,html[data-theme="dark"] .panel .muted{color:#9aa7b8}
+html[data-theme="dark"] .category-copy b,html[data-theme="dark"] .category-arrow,html[data-theme="dark"] .hot-card-copy b,html[data-theme="dark"] .product-source-link,html[data-theme="dark"] .panel a.contact-link,html[data-theme="dark"] .panel-top .icon-button{color:#9cc6ff}
+html[data-theme="dark"] .product-card{background:#121923;border-color:#283342}
+html[data-theme="dark"] .product-card:hover{border-color:#415066;box-shadow:0 8px 24px #0005}
+html[data-theme="dark"] .icon-button{color:#9aa7b8}
+html[data-theme="dark"] .icon-button:hover{background:#1e2835;color:#d8e7fb}
+html[data-theme="dark"] .filter-chip{background:#1a2330;color:#cfe0f7}
+html[data-theme="dark"] .empty-state,html[data-theme="dark"] .catalog-status,html[data-theme="dark"] .company-contacts{background:#151d28}
+html[data-theme="dark"] .catalog-source-note{background:#121a24;border-left-color:#4b5b70;color:#aab5c5}
+html[data-theme="dark"] .catalog-toolbar select,html[data-theme="dark"] .quote-form input,html[data-theme="dark"] .quote-form textarea{background:#141c27;border-color:#334052;color:#edf2f8}
+html[data-theme="dark"] .page-buttons button{background:#141c27;border-color:#334052;color:#cfe0f7}
+html[data-theme="dark"] .page-buttons button:hover{background:#1e2938}
+html[data-theme="dark"] .page-buttons button[aria-current=page]{background:#234d7e;border-color:#315f9e;color:#fff}
+html[data-theme="dark"] .hot-card{background:linear-gradient(145deg,#26364a,#202e40);border-color:#42556e;box-shadow:0 5px 18px #0003}
+html[data-theme="dark"] .hot-card:hover{background:linear-gradient(145deg,#30435a,#27384d);border-color:#647b99;box-shadow:0 8px 24px #0005}
+html[data-theme="dark"] .brand-list button{background:#151d28;border-color:#2f3a49}
+html[data-theme="dark"] .brand-list button:hover{background:#1b2532;border-color:#4b5c72}
+html[data-theme="dark"] .store-card{background:#121923;border-color:#2d3847}
+html[data-theme="dark"] .store-marker{background:#351a20}
+html[data-theme="dark"] .panel{background:#111923;border-color:#344154;color:#edf2f8;box-shadow:0 28px 100px #000a}
+html[data-theme="dark"] .panel::backdrop{background:#02070dbd}
+html[data-theme="dark"] .quantity{border-color:#3a4656}
+html[data-theme="dark"] .cart-row,html[data-theme="dark"] .footer,html[data-theme="dark"] .compare-table th,html[data-theme="dark"] .compare-table td{border-color:var(--line)}
+html[data-theme="dark"] .product-gallery figure,html[data-theme="dark"] .catalog-photo{background:#e9edf2;border-color:#b9c3d0}
+html[data-theme="dark"] .toast{background:#1c3554;color:#fff;box-shadow:0 9px 28px #0008}
+html[data-theme="dark"] .cart-icon b{border-color:#10161f}
+
+@media (max-width:950px){
+  .hero-art.hero-art-clean{width:60%;right:-2%;top:0;mask-image:linear-gradient(to right,transparent,#000 38%)}
+  .hero-copy{width:72%}
+  .benefits{width:100%;padding-right:125px}
+}
+@media (max-width:600px){
+  .topbar-inner{gap:8px}
+  .top-contacts{width:auto;flex:1;min-width:0}
+  .theme-switch-wrap{margin-left:auto}
+  .theme-toggle{padding:2px 5px;gap:0}
+  .theme-toggle-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .hero-inner{min-height:410px;padding:25px 3px 70px}
+  .hero-art.hero-art-clean{inset:0;width:100%;height:100%;mask-image:none;opacity:.5}
+  .hero-art-clean .hero-slide::before{width:70%;right:-8%;top:18%}
+  .hero-art-clean .hero-slide::after{width:52%;right:44%;bottom:2%}
+  .hero-copy{width:100%;max-width:none}
+  .benefits{margin-top:28px;padding:18px 0 0;width:100%;background:none;grid-template-columns:1fr 1fr;position:relative}
+  .slider-controls{bottom:18px;right:0}
+}
+@media (prefers-reduced-motion:reduce){.theme-toggle-thumb,.hero-art-clean .hero-slide::before,.hero-art-clean .hero-slide::after{transition:none}}
+
+
+/* 0.1.3.4 — dark theme image brightening for hot/category cards */
+html[data-theme="dark"] .hot-image,
+html[data-theme="dark"] .category-art{
+  mix-blend-mode:normal;
+  opacity:1;
+}
+html[data-theme="dark"] .hot-image .catalog-photo img,
+html[data-theme="dark"] .product-picture .catalog-photo img,
+html[data-theme="dark"] .product-gallery .catalog-photo img,
+html[data-theme="dark"] .category-art img{
+  filter:brightness(1.09) contrast(1.04);
+}
+html[data-theme="dark"] .hot-image .catalog-photo,
+html[data-theme="dark"] .product-picture .catalog-photo,
+html[data-theme="dark"] .product-gallery .catalog-photo{
+  background:#f3f6fa;
+  border-color:#c4ced9;
+}
+
+
+/* 0.1.3.6 — dark theme readable product image in opened product card */
+html[data-theme="dark"] .demo-gallery .catalog-photo.detail-visual{
+  background:#f7f9fc!important;
+  border:1px solid #c7d1dd;
+  box-shadow:inset 0 0 0 1px #eef3f8;
+  border-radius:10px;
+  padding:18px;
+}
+html[data-theme="dark"] .demo-gallery .catalog-photo.detail-visual img{
+  mix-blend-mode:normal!important;
+  opacity:1!important;
+  filter:brightness(1.22) contrast(1.08) saturate(1.02)!important;
+}
+
+
+/* 0.1.3.8 — definitive dark-theme image/card fix */
+html[data-theme="dark"] .demo-gallery .detail-visual,
+html[data-theme="dark"] .demo-gallery .catalog-photo.detail-visual{
+  mix-blend-mode:normal!important;
+  isolation:isolate;
+  background:#ffffff!important;
+  border-color:#cbd5e1!important;
+  box-shadow:none!important;
+}
+html[data-theme="dark"] .demo-gallery .detail-visual img,
+html[data-theme="dark"] .demo-gallery .catalog-photo.detail-visual img{
+  mix-blend-mode:normal!important;
+  opacity:1!important;
+  filter:brightness(1.05) contrast(1.04)!important;
+  background:#ffffff!important;
+}
+html[data-theme="dark"] .hot-card{
+  background:linear-gradient(145deg,#354d68,#2d435c)!important;
+  border-color:#5e7898!important;
+}
+html[data-theme="dark"] .hot-card:hover{
+  background:linear-gradient(145deg,#405c79,#354e69)!important;
+  border-color:#7f9aba!important;
+}

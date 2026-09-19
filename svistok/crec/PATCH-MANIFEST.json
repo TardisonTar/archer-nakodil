@@ -1,0 +1,27 @@
+{
+  "component": "CREC",
+  "base_compatible": [
+    "0.1.1.1",
+    "0.1.3.0",
+    "0.1.3.1",
+    "0.1.3.2",
+    "0.1.3.3",
+    "0.1.3.4",
+    "0.1.3.5",
+    "0.1.3.6",
+    "0.1.3.7",
+    "0.1.3.8"
+  ],
+  "target": "0.1.3.9",
+  "deploy_root": "/crec/",
+  "changed_files": [
+    "UPDATE-INFO.txt",
+    "VERSION",
+    "css/crec-ui-fixes.css",
+    "index.html",
+    "js/app.js",
+    "service-worker.js"
+  ],
+  "delete_files": [],
+  "notes": "Cumulative update. Fixes the actual hot-belt movement blocker: a transform:none!important rule was overriding the JavaScript transform. JS now also writes transform with !important."
+}
