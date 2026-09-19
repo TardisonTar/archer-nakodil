@@ -26,7 +26,7 @@ if crec.exists():
 crec.mkdir(parents=True)
 
 text_paths = [
-    ".htaccess", "PATCH-MANIFEST.json", "README.txt", "UPDATE-INFO.txt", "VERSION",
+    "PATCH-MANIFEST.json", "README.txt", "UPDATE-INFO.txt", "VERSION",
     "css/crec-magnifier.css", "css/crec-quantity.css", "css/crec-theme.css",
     "css/crec-ui-fixes.css", "css/styles.css", "data/catalog-meta.json",
     "data/catalog/01-e732f2a8f884.json", "data/catalog/02-ae5309b8339a.json",
