@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "category": "test",
+  "component": "portal",
+  "version": "0.4.1.3",
+  "baseArchive": "Archer-Nakodil-0.4.1.1-LOCAL-SITE-TEST-UPDATE.zip",
+  "appliedPatch": "Archer-Nakodil-0.4.1.3-LOCAL-LAUNCH-DOWNLOAD-FIX-TEST-UPDATE.zip",
+  "status": "source-prepared-for-git"
+}
