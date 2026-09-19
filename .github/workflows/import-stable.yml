@@ -1,0 +1,29 @@
+name: Import stable exact sources
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/import-stable.yml'
+      - '.bootstrap/import_stable.py'
+      - '.bootstrap/stable-expected.tsv'
+permissions:
+  contents: write
+jobs:
+  import-stable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Import only exact archive-matching live files
+        run: python .bootstrap/import_stable.py
+      - name: Commit exact matches and report
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A stable .bootstrap/stable-import-report.tsv
+          if ! git diff --cached --quiet; then
+            git commit -m "import: load exact stable 0.4.1.3 sources"
+            git push
+          fi
