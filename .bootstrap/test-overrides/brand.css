@@ -1,0 +1,21 @@
+/* Archer Nakodil brand layer */
+body[data-brand="archer"]{background:
+  radial-gradient(circle at 82% 2%,rgba(213,255,69,.055),transparent 22rem),
+  linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px),var(--bg);background-size:auto,48px 48px,48px 48px,auto}
+body[data-brand="archer"]:after{content:"A/N // LAB";position:fixed;right:12px;bottom:10px;z-index:2;font:10px var(--mono);letter-spacing:.14em;color:#d5ff4538;pointer-events:none;writing-mode:vertical-rl}
+.brand-icon{font-size:0;background:var(--acid) url('../icons/brand-mark.svg') center/27px 27px no-repeat;border-radius:2px;box-shadow:inset 0 0 0 1px #e7ff8a55}
+.site-header:before{content:"";position:absolute;left:0;bottom:-1px;width:82px;height:2px;background:var(--acid)}
+.hero-top:after,.page-hero .mono:after{content:" // A/N";color:#d5ff456e}
+.hero-title{filter:drop-shadow(0 10px 40px #0004)}
+.hero-title .second{position:relative}.hero-title .second:before{content:"";position:absolute;left:-.02em;bottom:-.055em;width:.42em;height:.035em;background:var(--acid);opacity:.8}
+.section-head h2,.page-hero h1{position:relative}.section-head h2:after{content:"";display:inline-block;width:9px;height:9px;margin-left:12px;background:var(--acid);vertical-align:.2em}
+.project-card,.update-card,.panel,.download-card,.featured-project{box-shadow:0 14px 42px rgba(0,0,0,.12)}
+.project-card:focus-within,.panel:focus-within{border-color:#637630}
+.badge-acid{box-shadow:inset 0 0 18px #d5ff4508}
+.site-footer{position:relative}.site-footer:before{content:"ARCHER NAKODIL / DIGITAL WORKSHOP";position:absolute;right:0;top:-17px;font:9px var(--mono);letter-spacing:.12em;color:#6f735f}
+@media(max-width:760px){body[data-brand="archer"]{background-size:auto,32px 32px,32px 32px,auto}body[data-brand="archer"]:after{display:none}.site-footer:before{display:none}.section-head h2:after{width:7px;height:7px;margin-left:8px}}
+
+/* Test-environment marker: visible beside the Archer Nakodil brand on every portal page. */
+body[data-brand="archer"] .brand::after{content:"ТЕСТ";display:inline-flex;align-items:center;justify-content:center;min-height:22px;margin-left:7px;padding:0 8px;border:1px solid var(--acid);border-radius:3px;color:var(--acid);background:#d5ff4508;box-shadow:inset 0 0 14px #d5ff4508,0 0 18px #d5ff4510;font:700 9px/1 var(--mono);letter-spacing:.13em;white-space:nowrap}
+@media(max-width:420px){body[data-brand="archer"] .brand::after{min-height:20px;margin-left:3px;padding:0 6px;font-size:8px;letter-spacing:.1em}}
