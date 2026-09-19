@@ -110,7 +110,7 @@ print("CREC OK", live, "assets", len(refs), "bytes", total)
 
 DOM_BASE = "https://cq593645.tw1.ru/dom/"
 dom_paths = [
-    "README.md", "VERSION.json", "assets/css/app.css", "assets/css/studio.css",
+    "assets/css/app.css", "assets/css/studio.css",
     "assets/js/model.js", "assets/js/studio.js", "assets/vendor/three.min.js", "index.html",
 ]
 expected = {
@@ -123,6 +123,21 @@ dom = Path("svistok/dom-svistka")
 if dom.exists():
     shutil.rmtree(dom)
 dom.mkdir(parents=True)
+(dom / "README.md").write_text("""# Дом Свистка 3D 0.0.9.0
+
+Откройте `index.html` в современном браузере. Вся 3D-библиотека находится внутри архива.
+
+Материалы фасада; «до / после»; расчёт фасада; варианты проекта и сравнение A/B; инспектор стен, окон, дверей и лестниц с размером, материалом, цветом и видимостью.
+
+Персональные и паспортные сведения в публичную сборку не включены.
+""", encoding="utf-8")
+(dom / "VERSION.json").write_text("""{
+  "schema": 1,
+  "project": "dom-svistka-3d",
+  "version": "0.0.9.0",
+  "architecture": 2
+}
+""", encoding="utf-8")
 
 for rel in dom_paths:
     data = fetch(urljoin(DOM_BASE, rel))
