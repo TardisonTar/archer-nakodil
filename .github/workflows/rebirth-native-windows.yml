@@ -40,10 +40,12 @@ jobs:
           echo "641dc59c3aa47fe6c22e667cf369fe71bcc68d9c55ee8660b3db7645938758fd  /tmp/rebirth.zip.b64" | sha256sum -c -
           base64 -d /tmp/rebirth.zip.b64 > /tmp/rebirth.zip
           echo "ace189e6c8476a0d596a4116eedf63798b5fe1c71981482a3f44d5967d675c2c  /tmp/rebirth.zip" | sha256sum -c -
-          rm -rf pc-native
+          rm -rf pc-native /tmp/rebirth-work
           mkdir -p /tmp/rebirth-work
           unzip -q /tmp/rebirth.zip -d /tmp/rebirth-work
           cp -a /tmp/rebirth-work/rebirth_ci_payload pc-native
+          cp ci/rebirth/patches/Entities.cs pc-native/Scripts/Gameplay/Entities.cs
+          cp ci/rebirth/patches/FactionSystem.cs pc-native/Scripts/Gameplay/FactionSystem.cs
           test -f pc-native/project.godot
           test -f pc-native/ProjectRebirth.csproj
 
