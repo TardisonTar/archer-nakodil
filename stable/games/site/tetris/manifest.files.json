@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "component": "tetris",
+  "architecture": 2,
+  "version": "0.1.0.0",
+  "generatedAt": "2026-09-15T13:40:00+03:00",
+  "files": {
+    "games/tetris/index.html": {
+      "sha256": "ebdd480914460eae8f4c3f01cd14a05581b37fb37b89573c0761a396768f0507",
+      "bytes": 3996
+    },
+    "games/tetris/play/assets/css/app.css": {
+      "sha256": "25d2f44baee803ba847927b81bd993d5061c09ef90b45bcf3574ab0ec8a1fa89",
+      "bytes": 9122
+    },
+    "games/tetris/play/assets/js/app.js": {
+      "sha256": "b28eedad4297c7a2c9c1171755eda7cf06e9b23792cebe5e8a69e00ddc1c3159",
+      "bytes": 20301
+    },
+    "games/tetris/play/assets/js/config.js": {
+      "sha256": "fa32b2957d6041e4be2295dfde8514a08647581574dbd845d6755d2c71175400",
+      "bytes": 32
+    },
+    "games/tetris/play/index.html": {
+      "sha256": "53d1744148bcf335bb933c37126e6bba4e32e19fbd01133cac1beec7647665b6",
+      "bytes": 8026
+    },
+    "games/tetris/release.json": {
+      "sha256": "3e14fd75feea1c59290f3796259e763970195cda3ac8b41fc591efdabced678d",
+      "bytes": 254
+    }
+  }
+}

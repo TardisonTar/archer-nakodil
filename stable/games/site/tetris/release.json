@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "project": "tetris",
+  "status": "alpha",
+  "version": "0.1.0.0",
+  "playUrl": "/games/tetris/play/",
+  "downloadUrl": "/downloads/tetris/latest/Тетрис-0.1.0.0.zip",
+  "architecture": 2,
+  "fileManifest": "manifest.files.json"
+}

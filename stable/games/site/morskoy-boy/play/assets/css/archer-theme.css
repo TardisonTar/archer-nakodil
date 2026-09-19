@@ -1,0 +1,176 @@
+/* Archer Nakodil / A/N brand skin for Morskoy Boy 1.4.3 */
+:root{
+  --bg:#101110;
+  --panel:#191b18;
+  --line:#35382e;
+  --text:#f2f3ed;
+  --muted:#a4a79d;
+  --teal:#d5ff45;
+  --orange:#ff8b68;
+  --water:#141914;
+  --an-surface-2:#20231d;
+  --an-surface-3:#121411;
+  --an-line-strong:#515646;
+  --an-acid:#d5ff45;
+  --an-acid-soft:#e3ff84;
+  --an-danger:#ff8b68;
+  --font:Arial,Helvetica,sans-serif;
+  --an-mono:"Courier New",ui-monospace,monospace;
+  font-family:var(--font);
+}
+
+*{scrollbar-color:#515646 #121411}
+::selection{background:var(--an-acid);color:#101110}
+body{
+  color:var(--text);
+  background:
+    radial-gradient(circle at 82% 2%,rgba(213,255,69,.06),transparent 24rem),
+    linear-gradient(rgba(255,255,255,.014) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.014) 1px,transparent 1px),
+    var(--bg);
+  background-size:auto,48px 48px,48px 48px,auto;
+}
+body:after{
+  content:"A/N // NAVAL";
+  position:fixed;right:12px;bottom:10px;z-index:2;
+  font:10px var(--an-mono);letter-spacing:.14em;color:#d5ff4538;
+  pointer-events:none;writing-mode:vertical-rl;
+}
+button:focus-visible,a:focus-visible,input:focus-visible{outline-color:var(--an-acid)}
+
+/* Header / identity */
+.topbar{position:relative;border-bottom-color:var(--line);height:102px}
+.topbar:before{content:"";position:absolute;left:0;bottom:-1px;width:82px;height:2px;background:var(--an-acid)}
+.brand{font-family:var(--font);letter-spacing:.075em}
+.brand-mark{
+  position:relative;width:42px;height:42px;border-radius:2px;
+  background:var(--an-acid);color:#171c0c;box-shadow:inset 0 0 0 1px #e7ff8a55;
+  font-size:0;
+}
+.brand-mark:before{content:"A/N";font:700 12px/1 var(--an-mono);letter-spacing:-.08em}
+.brand small{font:10px var(--an-mono);letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+
+/* Typography */
+.eyebrow,.mode-tag,.mode-number,.stage-indicator>span,.coordinate,.fleet-item-count,
+.stats strong,.log-index,.log-panel h3 span,.turn-pill,.update-panel #game-version,
+.history-menu-count,.lan-room-code strong,#lan-code,kbd,footer{font-family:var(--an-mono)}
+h1,h2,.mode-card>strong{letter-spacing:-.04em}
+h1 span,.mode-tag,.mode-cta,.handoff-number,.update-panel #game-version{color:var(--an-acid)}
+.eyebrow{letter-spacing:.12em;color:#b7baae}
+
+/* Buttons */
+.quiet-button,.outline-button,.icon-button,.primary-button{border-radius:4px}
+.quiet-button{color:var(--muted)}
+.quiet-button:hover{color:var(--an-acid);background:#20231d}
+.outline-button{border-color:var(--an-line-strong);background:transparent}
+.outline-button:hover{border-color:var(--an-acid);background:#20231d;color:var(--text)}
+.primary-button{background:var(--an-acid);border-color:var(--an-acid);color:#171c0c;font-weight:700}
+.primary-button:hover{background:var(--an-acid-soft);border-color:var(--an-acid-soft)}
+.primary-button:disabled{filter:saturate(.45)}
+
+/* Main menu */
+.main-menu{max-width:1080px}
+.menu-heading h1{filter:drop-shadow(0 10px 40px #0004)}
+.mode-cards{gap:14px}
+.mode-card{
+  border-radius:9px;border-color:var(--line);background:var(--panel);
+  box-shadow:0 14px 42px rgba(0,0,0,.14);
+}
+.mode-card:before{content:"";position:absolute;left:0;top:0;width:46px;height:2px;background:var(--an-acid);opacity:.78}
+.mode-card:hover{background:#20231d;border-color:#657a31;transform:translateY(-2px)}
+.mode-number{color:#6f735f}
+.mode-card:hover .mode-number{color:var(--an-acid)}
+.mode-tag{color:var(--an-acid)}
+.mode-cta{border-top-color:var(--line);color:var(--an-acid)}
+.friend-card,.lan-card{background:var(--panel);border-color:var(--line)}
+.friend-card .mode-number{color:#6f735f}
+.lan-card .mode-tag,.lan-card .mode-cta{color:var(--an-acid)}
+.menu-note{font-family:var(--an-mono);font-size:12px;letter-spacing:.025em}
+.offline-ready{font-family:var(--an-mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase}
+.history-menu-button{border-color:var(--line);border-radius:6px;background:var(--panel)}
+.history-menu-button:hover{border-color:var(--an-acid);background:#20231d}
+.history-menu-button>span:last-child{color:var(--an-acid)}
+.history-menu-count{color:var(--an-acid);background:#d5ff450c;border:1px solid #657a31;border-radius:3px}
+.update-panel{border-top:1px solid var(--line);padding-top:16px}
+.update-panel #game-version{color:var(--an-acid)}
+
+/* Game status / panels */
+.status-strip{border-color:#4e5a35;background:#1b2118;border-radius:7px}
+.status-strip.enemy-turn{background:#20231d;border-color:var(--an-line-strong)}
+.status-strip.victory{background:#252d18;border-color:var(--an-acid)}
+.status-strip.defeat{background:#2c211e;border-color:#925c4b}
+.status-icon{color:var(--an-acid)}
+.field-panel,.setup-panel,.stats-panel,.log-panel{
+  background:
+    radial-gradient(circle at 82% 0%,rgba(213,255,69,.045),transparent 22%),
+    linear-gradient(155deg,#191b18,#121411 76%);
+  border-color:var(--line);border-radius:9px;box-shadow:0 18px 32px rgba(0,0,0,.16)
+}
+.panel-bottom{border-top-color:var(--line)}
+.fleet-count strong{color:var(--text)}
+.turn-pill{border-color:var(--an-line-strong);border-radius:3px}
+.turn-pill.active{color:var(--an-acid);border-color:#657a31;background:#d5ff4508}
+.setup-actions .outline-button.active{border-color:var(--an-acid);color:var(--an-acid);background:#d5ff4508}
+.fleet-item{border-color:var(--line);border-radius:4px;background:#161814}
+.fleet-item:hover:not(:disabled),.fleet-item.selected{border-color:var(--an-acid);background:#20231d}
+.fleet-item.selected{box-shadow:inset 0 0 0 1px #d5ff4520}
+.ship-blocks i,.key-ship{background:#5c6831;border-color:#a8c64d}
+.fleet-item-count{color:var(--an-acid)}
+
+/* Classic grid fallback */
+.cell{border-color:#39402d;background:#151914;color:var(--an-acid)}
+.cell:not(:disabled):hover{background:#2a311c;border-color:#92ae3f}
+.cell.ship{background:#56602f;border-color:#9ab448;box-shadow:inset 0 0 0 3px #454d28}
+.cell.ship:after{background:#cadb80}
+.cell.hit,.cell.sunk{background:#5a332b;border-color:#a65f4b;color:#ffb293}
+.cell.miss:after{background:#b8bbb0}
+.cell.inferred:after{background:#65695c}
+.cell.ghost-valid{background:#72873a;border-color:var(--an-acid)}
+.cell.ghost-invalid{background:#62382f;border-color:#f2a289}
+.coordinate{color:#929687}
+
+/* Pseudo-3D ocean: retain legibility, tint UI grid to the brand */
+.ocean-water{filter:drop-shadow(0 16px 16px #0009) saturate(.82) hue-rotate(14deg)}
+.ocean-wrapper .coordinate{color:#a4a79d;text-shadow:0 1px 3px #000}
+.ocean-wrapper .cell{border-right-color:#d5ff4519;border-bottom-color:#d5ff4519}
+.ocean-wrapper .cell.ship,.ocean-wrapper .cell.hit,.ocean-wrapper .cell.sunk,.ocean-wrapper .cell.revealed{border-color:#d5ff4519}
+.ocean-wrapper .cell:not(:disabled):hover{background:#d5ff451d;border-color:#d5ff45a8}
+.ocean-wrapper .cell:focus-visible{outline-color:var(--an-acid);background:#d5ff4524}
+.ocean-wrapper .cell.ghost-valid{background:#d5ff4540;outline-color:var(--an-acid)}
+.ocean-wrapper .cell.ghost-invalid{background:#ff8b6848;outline-color:#ffb093}
+.ocean-wrapper .board-cover{background:linear-gradient(180deg,rgba(16,17,16,.06),rgba(16,17,16,.25));text-shadow:0 2px 8px #000}
+.ocean-wrapper .board-cover .target-mark{color:#a4a79d}
+
+/* Logs / history / LAN */
+.log-panel li,.history-card-header,.history-summary{color:var(--muted)}
+.history-card{border-color:var(--line);border-radius:6px;background:#151713}
+.history-card .history-outcome,.history-winner-label{color:var(--an-acid)}
+.history-card .history-loss{color:var(--an-danger)}
+.history-mode{border-color:var(--an-line-strong);border-radius:3px}
+.history-empty{border-color:#515646;border-radius:6px}
+.lan-room-panel{border-color:var(--line);background:#191b18;border-radius:7px}
+.lan-room-code strong{color:var(--an-acid)}
+.lan-form-label input,.player-fields input{border-color:var(--an-line-strong);border-radius:4px;background:#121411;color:var(--text)}
+.lan-form-label input:focus,.player-fields input:focus{outline-color:var(--an-acid)}
+.lan-divider:before,.lan-divider:after{background:var(--line)}
+.lan-error,.history-storage-error{border-color:#925c4b;background:#2c211e;color:#ffc0aa!important}
+
+/* Dialogs */
+dialog{background:#191b18;color:var(--text);border-color:var(--line);border-radius:8px;box-shadow:0 30px 90px #0009}
+dialog::backdrop{background:#070807c9;backdrop-filter:blur(4px)}
+.rules-list li::marker{color:var(--an-acid);font-family:var(--an-mono)}
+
+/* A/N launch signature */
+.launch-splash{background:#0a0b0a}
+.launch-splash span{position:relative;color:var(--text);font-family:var(--font);font-weight:700;letter-spacing:-.03em;text-transform:uppercase}
+.launch-splash span:before{content:"A/N //";display:block;margin-bottom:12px;color:var(--an-acid);font:12px var(--an-mono);letter-spacing:.16em;text-align:center}
+.launch-splash span:after{content:"";display:block;width:54px;height:2px;background:var(--an-acid);margin:15px auto 0}
+
+footer{border-top-color:var(--line);color:#8f9289}
+footer b{color:var(--an-acid)}
+
+@media(max-width:760px){
+  body{background-size:auto,32px 32px,32px 32px,auto}
+  body:after{display:none}
+  .topbar:before{width:58px}
+}

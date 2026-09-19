@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101521">
+  <title>Тетрис — уровень 1 и бесконечный режим</title>
+  <link rel="stylesheet" href="assets/css/app.css?v=2.1">
+</head>
+<body>
+<main>
+  <header>
+    <div><h1>Тетрис<span style="color:#8ef1cf">.</span></h1><p id="intro" class="intro">Два режима. Один любимый Тетрис.</p></div>
+    <span id="mode-tag" class="tag">ГЛАВНОЕ МЕНЮ</span>
+  </header>
+  <section id="menu" class="menu" aria-labelledby="menu-heading">
+    <span class="label">Выбери свой темп</span>
+    <h2 id="menu-heading" class="menu-heading" tabindex="-1">Во что сыграем?</h2>
+    <p class="menu-lead">Пройди первый уровень или проверь, сколько линий сможешь собрать в бесконечной игре.</p>
+    <div class="player-settings">
+      <label for="player-name" class="label">Имя в таблице лидеров</label>
+      <input id="player-name" type="text" maxlength="24" placeholder="Игрок" autocomplete="nickname" aria-describedby="player-hint">
+      <p id="player-hint" class="progress-note">До 24 символов. Если оставить пустым — «Игрок».</p>
+    </div>
+    <div class="mode-grid">
+      <button id="choose-level" class="mode-card">
+        <span class="mode-icon" aria-hidden="true">01</span>
+        <span class="mode-name">Уровень 1</span>
+        <span class="mode-description">Собери 10 линий, чтобы победить.<br>Спокойная постоянная скорость.</span>
+        <span class="mode-start">Начать уровень →</span>
+      </button>
+      <button id="choose-endless" class="mode-card endless">
+        <span class="mode-icon" aria-hidden="true">∞</span>
+        <span class="mode-name">Бесконечный режим</span>
+        <span class="mode-description">Играй до заполнения поля.<br>Ускорение каждые 10 линий.</span>
+        <span class="mode-start">Начать игру →</span>
+      </button>
+    </div>
+    <button id="resume" class="primary resume" hidden>Продолжить игру</button>
+    <button id="menu-leaders" class="resume">Таблица лидеров ↓</button>
+    <p class="menu-hint">Управляй стрелками и пробелом или кнопками под полем.<br>В меню можно вернуться в любой момент. Выбор режима начинает новую игру.</p>
+    <section id="leaderboard" class="leaderboard" aria-labelledby="leaderboard-heading">
+      <h2 id="leaderboard-heading" tabindex="-1">Таблица лидеров</h2>
+      <p id="leaderboard-note" class="leaderboard-note">10 лучших завершённых игр в каждом режиме. Результаты сохраняются только в этом браузере.</p>
+      <div class="leaderboard-filters" role="group" aria-label="Режим таблицы лидеров">
+        <button id="leaders-level" aria-pressed="true">Уровень 1</button>
+        <button id="leaders-endless" aria-pressed="false">Бесконечный режим</button>
+      </div>
+      <table class="leader-table">
+        <caption id="leaderboard-caption">Уровень 1 · 10 лучших результатов</caption>
+        <thead><tr><th scope="col">№</th><th scope="col">Игрок</th><th scope="col">Очки</th><th scope="col">Линии</th><th scope="col" class="record-date">Дата</th></tr></thead>
+        <tbody id="leaderboard-rows"><tr><td colspan="5" class="empty-results">Здесь пока пусто. Заверши первую игру!</td></tr></tbody>
+      </table>
+      <p class="progress-note">Выше тот, у кого больше очков. При равенстве — больше линий, затем более ранний результат.</p>
+      <button id="leaders-resume" class="primary resume" hidden>Продолжить игру</button>
+    </section>
+  </section>
+  <div id="game-screen" hidden>
+  <div class="layout">
+    <section aria-label="Игровое поле и управление">
+      <div class="board-wrap">
+        <canvas id="board" width="300" height="600" tabindex="-1" aria-label="Игровое поле Тетриса: 10 столбцов, 20 строк">Для игры нужен браузер с поддержкой Canvas.</canvas>
+        <div id="overlay" class="overlay" hidden>
+          <div id="symbol" class="symbol" aria-hidden="true">▦</div>
+          <h2 id="title">Начнём?</h2>
+          <p id="message">Заполняй горизонтальные ряды.<br>Цель — 10 линий.</p>
+          <p id="result-note" class="result-note" hidden></p>
+          <button id="main-action" class="primary">Играть</button>
+          <button id="result-leaders" class="overlay-menu" hidden>Таблица лидеров</button>
+          <button id="overlay-menu" class="overlay-menu">Главное меню</button>
+        </div>
+      </div>
+      <div class="touch" aria-label="Кнопки управления">
+        <button data-action="left" aria-label="Влево">←</button>
+        <button data-action="rotate" aria-label="Повернуть">↻</button>
+        <button data-action="right" aria-label="Вправо">→</button>
+        <button data-action="down" aria-label="Вниз">↓</button>
+        <button data-action="drop" class="drop">Сбросить фигуру ↓↓</button>
+      </div>
+    </section>
+    <aside>
+      <div class="card">
+        <span class="label">Счёт</span><span id="score" class="value">0</span>
+        <div class="line-count"><span class="label">Линии</span><strong><span id="lines">0</span><span id="line-target"> / 10</span></strong></div>
+        <div id="speed-row" class="speed-row" hidden><span class="label">Скорость</span><strong id="speed-stage">1</strong></div>
+        <progress id="progress" value="0" max="10" aria-label="Пройдено линий из 10"></progress>
+        <p id="progress-note" class="progress-note">До победы: 10 линий</p>
+        <div class="line-count"><span class="label">Рекорд</span><strong id="best-score">0</strong></div>
+        <p class="progress-note">Игрок: <span id="game-player">Игрок</span></p>
+      </div>
+      <div class="card"><span class="label">Следующая</span><canvas id="next" width="120" height="100" aria-label="Следующая фигура"></canvas></div>
+      <div class="actions"><button id="pause" disabled>Пауза</button><button id="restart">Заново</button></div>
+      <button id="menu-button" class="menu-button">Главное меню</button>
+      <button id="game-leaders" class="menu-button">Таблица лидеров</button>
+      <div class="card controls">
+        <span class="label">Управление</span>
+        <p><kbd>←</kbd> <kbd>→</kbd> — движение<br><kbd>↑</kbd> — поворот<br><kbd>↓</kbd> — ускорить<br><kbd>Пробел</kbd> — сбросить<br><kbd>P</kbd> / <kbd>Esc</kbd> — пауза</p>
+      </div>
+    </aside>
+  </div>
+  <footer id="game-footer">Уровень 1 · Одна клетка за 0,8 секунды · Контур показывает место падения</footer>
+  </div>
+  <p id="status" role="status" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)"></p>
+</main>
+<script src="assets/js/app.js?v=2.1"></script>
+<script src="assets/js/config.js?v=2.1"></script><script defer src="/assets/js/analytics.js"></script><script defer src="/assets/js/pwa.js"></script></body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="battleship-build" content="2026091511">
+  <meta name="theme-color" content="#091820">
+  <meta name="description" content="Морской бой против компьютера или с другом на одном устройстве. Выбирайте режим, тайно расставляйте корабли и сражайтесь по классическим правилам.">
+  <title>Морской бой — без интернета</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23091820'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%236ce8ce' stroke-width='2'/%3E%3Cpath d='M16 3v9m0 8v9M3 16h9m8 0h9' stroke='%236ce8ce' stroke-width='2'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="assets/css/app.css?v=0.1.5.0"><link rel="stylesheet" href="assets/css/archer-theme.css?v=0.4.0.0"><link rel="stylesheet" href="assets/css/features.css?v=0.1.5.0">
+  
+<link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png"></head>
+<body>
+  <div id="launch-splash" class="launch-splash" aria-hidden="true"><span>Archer накодил</span></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Морской бой, главная"><span class="brand-mark" aria-hidden="true">⌖</span><span>МОРСКОЙ БОЙ<small>ТАКТИЧЕСКАЯ ИГРА</small></span></a>
+      <nav class="header-actions" aria-label="Настройки игры">
+        <button id="sound" class="quiet-button" aria-pressed="false">Звук: выкл.</button>
+        <button id="rules" class="quiet-button">Правила <span aria-hidden="true">↗</span></button>
+        <button id="menu-button" class="quiet-button" hidden>В меню</button>
+        <button id="new-game" class="outline-button" hidden>Новая игра</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="main-menu" class="main-menu" aria-labelledby="menu-title">
+        <div class="menu-heading"><span class="eyebrow">ГЛАВНОЕ МЕНЮ</span><h1 id="menu-title">Морской <span>бой.</span></h1><p>Выберите, с кем выйти в море.</p></div>
+        <div class="mode-cards">
+          <button id="choose-computer" class="mode-card"><span class="mode-number" aria-hidden="true">01</span><span class="mode-tag">ОДИН ИГРОК</span><strong>Против компьютера</strong><span class="mode-description">Расставьте флот и проверьте свою тактику в сражении с компьютером.</span><span class="mode-cta">Начать игру <span aria-hidden="true">→</span></span></button>
+          <button id="choose-friend" class="mode-card friend-card"><span class="mode-number" aria-hidden="true">02</span><span class="mode-tag">ДВА ИГРОКА · ОДНО УСТРОЙСТВО</span><strong>С другом</strong><span class="mode-description">Играйте по очереди на одном экране. При передаче хода оба поля скрываются.</span><span class="mode-cta">Играть вдвоём <span aria-hidden="true">→</span></span></button>
+          <button id="choose-lan" class="mode-card lan-card"><span class="mode-number" aria-hidden="true">03</span><span class="mode-tag">ДВА УСТРОЙСТВА · ОДНА СЕТЬ</span><strong>По локальной сети</strong><span class="mode-description">Каждый играет со своего экрана. Подключитесь к одной Wi-Fi или проводной сети.</span><span class="mode-cta">Создать или войти <span aria-hidden="true">→</span></span></button>
+        </div>
+        <button id="show-history" class="history-menu-button"><span>История матчей</span><span class="history-menu-count" id="history-menu-count">0</span><span aria-hidden="true">→</span></button>
+        <div class="update-panel"><span id="game-version">Версия 0.1.5.0</span><span id="update-status" role="status" aria-live="polite">Проверяем обновления…</span><button id="update-check" class="quiet-button">Проверить обновления</button><button id="update-skip" class="outline-button" hidden>Играть сейчас</button></div>
+        <div class="menu-note"><span>Классические правила</span><span>10 кораблей у каждого</span><span>Попадание — ещё один ход</span></div>
+        <p class="offline-ready">Автономная версия · LAN через локальный WebSocket-сервер</p>
+      </section>
+
+      <section id="handoff-screen" class="handoff-screen" aria-labelledby="handoff-title" hidden>
+        <span class="eyebrow" id="handoff-stage">ПЕРЕДАЧА УСТРОЙСТВА</span><div class="handoff-number" id="handoff-number" aria-hidden="true">01</div>
+        <p id="handoff-reason" class="handoff-reason"></p><h1 id="handoff-title">Игрок 1, ваша очередь</h1>
+        <p id="handoff-help">Заберите устройство. Второй игрок должен отвернуться.</p>
+        <button id="reveal-player" class="primary-button">Я готов — открыть поле <span aria-hidden="true">→</span></button>
+        <p class="handoff-note">Оба поля скрыты до нажатия кнопки.</p>
+      </section>
+
+      <div id="game-screen" hidden>
+      <section id="lan-room-panel" class="lan-room-panel" hidden aria-label="Комната локальной сети"><div class="lan-room-code"><span>Код комнаты</span><strong id="lan-room-code"></strong></div><label class="lan-address-label">Адрес для второго устройства<input id="lan-room-address" readonly aria-label="Адрес для друга"></label><span id="lan-peer-status" class="lan-peer-status"></span></section>
+      <p id="lan-game-error" class="lan-error" role="status" hidden></p>
+      <section class="intro" aria-labelledby="game-title">
+        <div><div class="eyebrow" id="match-label">ВЫ ПРОТИВ КОМПЬЮТЕРА</div><h1 id="game-title">Море. Флот. <span>Ваш ход.</span></h1></div>
+        <div class="stage-indicator"><span id="phase-number">01</span><div><strong id="phase-name">Расстановка</strong><small id="phase-detail">Подготовьте свой флот</small></div></div>
+      </section>
+
+      <section class="status-strip" aria-label="Ход игры">
+        <div class="status-main"><span class="status-icon" id="status-icon" aria-hidden="true">⌖</span><div><strong id="status" role="status" aria-live="polite">Флот готов к выходу</strong><p id="status-help">Оставьте эту расстановку или измените её перед боем.</p></div></div>
+        <button class="primary-button" id="start">Начать бой <span aria-hidden="true">→</span></button>
+      </section>
+
+      <div class="battlefields">
+        <section class="field-panel own-panel" aria-labelledby="own-heading">
+          <div class="panel-heading"><div><span class="eyebrow">СОЮЗНЫЙ СЕКТОР</span><h2 id="own-heading">Ваш флот</h2></div><span class="fleet-count"><strong id="own-count">10</strong> / 10 кораблей</span></div>
+          <div class="board-wrapper"><div class="board" id="own-board" role="group" aria-label="Ваше поле 10 на 10"></div></div>
+          <div class="panel-bottom"><div class="legend"><span><i class="key-ship"></i>Корабль</span><span><i class="key-hit"></i>Попадание</span><span><i class="key-miss"></i>Мимо</span></div></div>
+        </section>
+
+        <section class="field-panel enemy-panel" aria-labelledby="enemy-heading">
+          <div class="panel-heading"><div><span class="eyebrow">ЦЕЛЕВОЙ СЕКТОР</span><h2 id="enemy-heading">Противник</h2></div><span class="fleet-count"><strong id="enemy-count">10</strong> / 10 кораблей</span></div>
+          <div class="board-wrapper enemy-wrapper"><div class="board" id="enemy-board" role="group" aria-label="Поле противника 10 на 10"></div><div class="board-cover" id="board-cover"><span class="target-mark" aria-hidden="true">⌖</span><strong>Противник на позиции</strong><span>Начните бой, чтобы открыть огонь</span></div></div>
+          <div class="panel-bottom"><span class="enemy-hint" id="enemy-hint">Корабли противника скрыты</span><span class="turn-pill" id="turn-pill">ОЖИДАНИЕ</span></div>
+        </section>
+      </div>
+
+      <section class="setup-panel" id="setup-panel" aria-label="Расстановка кораблей">
+        <div class="setup-top"><div><h3>Расстановка флота</h3><p id="placement-help">Корабли не касаются друг друга, даже по диагонали.</p></div><div class="setup-actions"><button class="outline-button" id="shuffle"><span aria-hidden="true">⤨</span> Случайно</button><button class="outline-button" id="manual">Вручную</button><button class="outline-button" id="rotate" hidden>Повернуть <kbd>R</kbd></button></div></div>
+        <div class="fleet-picker" id="fleet-picker"></div>
+      </section>
+
+      <section class="battle-info" id="battle-info" hidden>
+        <div class="stats-panel"><h3 id="stats-heading">Ваша стрельба</h3><div class="stats"><div><strong id="shots-stat">0</strong><span>Выстрелов</span></div><div><strong id="hits-stat">0</strong><span>Попаданий</span></div><div><strong id="accuracy-stat">—</strong><span>Точность</span></div></div></div>
+        <div class="log-panel"><h3>Журнал боя <span id="log-counter">00</span></h3><ol id="battle-log"><li class="log-empty">Выберите клетку на поле противника.</li></ol></div>
+      </section>
+      <div id="match-history-result" class="match-history-result" hidden><p id="match-save-status" role="status"></p><button id="show-result-history" class="outline-button">История матчей</button></div>
+      <footer><span>10 × 10 <b>·</b> 10 кораблей <b>·</b> 20 палуб</span><span>Попадание — ещё один ход</span></footer>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="rules-dialog" aria-labelledby="rules-title"><div class="dialog-header"><span class="eyebrow">КАК ИГРАТЬ</span><button class="icon-button" data-close="rules-dialog" aria-label="Закрыть правила">×</button></div><h2 id="rules-title">Точность решает.</h2><ol class="rules-list"><li>У каждого игрока 10 кораблей: один на 4 клетки, два на 3, три на 2 и четыре на 1.</li><li>Корабли стоят горизонтально или вертикально и не касаются друг друга, даже углами.</li><li>Нажимайте на клетки поля противника. При попадании стреляйте ещё раз; при промахе ход переходит сопернику.</li><li>Когда корабль потоплен, клетки вокруг него отмечаются автоматически.</li><li>Потопите весь флот противника первым, чтобы победить.</li></ol><p class="keyboard-note">При ручной расстановке выберите длину корабля и нажмите на своё поле. Нажатие на поставленный корабль убирает его. Поворот — кнопка или R. По полям можно перемещаться стрелками, действие — Enter.</p><button class="primary-button full-width" data-close="rules-dialog">Всё понятно</button></dialog>
+  <dialog id="restart-dialog" aria-labelledby="restart-title"><div class="dialog-header"><span class="eyebrow">ТЕКУЩАЯ ПАРТИЯ</span><button class="icon-button" data-close="restart-dialog" aria-label="Закрыть">×</button></div><h2 id="restart-title">Начать заново?</h2><p id="restart-help">Текущая партия завершится. Вы сможете расставить новый флот.</p><div class="dialog-actions"><button class="outline-button" data-close="restart-dialog">Продолжить игру</button><button class="primary-button" id="confirm-restart">Новая игра</button></div></dialog>
+  <dialog id="friend-dialog" aria-labelledby="friend-title"><div class="dialog-header"><span class="eyebrow">НА ОДНОМ УСТРОЙСТВЕ</span><button class="icon-button" data-close="friend-dialog" aria-label="Закрыть">×</button></div><h2 id="friend-title">Два игрока. Два флота.</h2><p>Сначала каждый тайно расставляет корабли. Затем передавайте устройство после промаха. Начинает первый игрок.</p><form id="friend-form"><div class="player-fields"><label>Первый игрок<input id="player-one-name" name="playerOne" maxlength="24" placeholder="Игрок 1" autocomplete="off"></label><label>Второй игрок<input id="player-two-name" name="playerTwo" maxlength="24" placeholder="Игрок 2" autocomplete="off"></label></div><button class="primary-button full-width" type="submit">К расстановке <span aria-hidden="true">→</span></button></form></dialog>
+  <dialog id="history-dialog" class="history-dialog" aria-labelledby="history-title"><div class="dialog-header"><span class="eyebrow">ЗАВЕРШЁННЫЕ ПАРТИИ</span><button class="icon-button" data-close="history-dialog" aria-label="Закрыть историю">×</button></div><h2 id="history-title">История матчей</h2><p class="history-storage-note">История хранится в этом браузере на этом устройстве. У сайта, автономного файла и локального сервера она отдельная.</p><p id="history-storage-error" class="history-storage-error" role="status" hidden></p><p id="history-summary" class="history-summary"></p><div id="history-empty" class="history-empty"><strong>Пока нет завершённых матчей</strong><p>Доиграйте партию до победы — результат появится здесь.</p></div><ol id="history-list" class="history-list"></ol><button id="history-more" class="outline-button full-width" hidden>Показать ещё 20</button></dialog>
+  <dialog id="lan-dialog" class="lan-dialog" aria-labelledby="lan-title"><div class="dialog-header"><span class="eyebrow">ИГРА ПО ЛОКАЛЬНОЙ СЕТИ</span><button class="icon-button" data-close="lan-dialog" aria-label="Закрыть">×</button></div><h2 id="lan-title">Каждому — свой экран.</h2><div id="lan-instructions"><p>Один компьютер запускает сервер. Второй игрок открывает его адрес в браузере на компьютере, планшете или телефоне.</p><ol class="rules-list"><li>Скачайте и полностью распакуйте комплект для локальной сети.</li><li>На компьютере с Python 3 запустите <b>START-WINDOWS.bat</b> или файл запуска для своей системы.</li><li>Оба игрока открывают адрес из окна сервера. Один создаёт комнату, второй вводит её код.</li></ol><p class="lan-small">Для двух устройств используйте комплект «Морской-бой-LAN.zip», который можно скачать из меню сайта вместе с этой игрой.</p><p class="lan-small">Интернет не нужен. Окно сервера должно оставаться открытым. Python нужен только на компьютере, запускающем сервер.</p></div><div id="lan-controls" hidden><p>Создайте комнату и передайте другу адрес сервера и код. Оба устройства должны быть в одной сети.</p><form id="lan-form"><label class="lan-form-label">Ваше имя<input id="lan-name" maxlength="24" placeholder="Игрок" autocomplete="nickname"></label><button id="lan-create" type="button" class="primary-button full-width">Создать комнату</button><div class="lan-divider">или войти в комнату друга</div><label class="lan-form-label">Код комнаты<input id="lan-code" maxlength="6" minlength="6" placeholder="ABC123" autocomplete="off" autocapitalize="characters" spellcheck="false"></label><button id="lan-join" class="outline-button full-width" type="submit">Подключиться</button><button id="lan-spectate" class="outline-button full-width" type="button">Наблюдать матч</button></form><p id="lan-connect-error" class="lan-error" role="status" hidden></p></div></dialog>
+<script src="assets/js/game-core.js?v=0.1.5.0"></script>
+<script src="assets/js/history.js?v=0.1.5.0"></script>
+<script src="assets/js/lan-client.js?v=0.1.5.0"></script>
+<script src="assets/vendor/three.min.js?v=0.1.5.0"></script>
+<script src="assets/js/ocean-3d.js?v=0.1.5.0"></script>
+<script src="assets/js/renderer.js?v=0.1.5.0"></script>
+<script src="assets/js/app.js?v=0.1.5.0"></script>
+<script src="assets/js/features.js?v=0.1.5.0"></script>
+<script defer src="/assets/js/pwa.js"></script><script defer src="/assets/js/analytics.js"></script></body>
+</html>

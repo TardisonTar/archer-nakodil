@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "slug": "morskoy-boy",
+  "version": "0.1.5.0",
+  "status": "beta",
+  "architecture": 2,
+  "releaseDate": "2026-09-15",
+  "play": "play/",
+  "features": [
+    "classic",
+    "storm",
+    "sonar",
+    "admiral",
+    "bigmap-15x15",
+    "profile",
+    "cinematic-shots",
+    "webgl-ocean",
+    "lan-websocket",
+    "lan-spectator"
+  ]
+}

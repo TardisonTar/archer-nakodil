@@ -1,4 +1,30 @@
 status	path	detail
+MATCH	games/site/morskoy-boy/index.html	web-exact
+MATCH	games/site/morskoy-boy/manifest.files.json	web-exact
+MATCH	games/site/morskoy-boy/play/assets/css/app.css	web-exact
+MATCH	games/site/morskoy-boy/play/assets/css/archer-theme.css	web-exact
+MATCH	games/site/morskoy-boy/play/assets/css/features.css	web-exact
+MATCH	games/site/morskoy-boy/play/assets/js/app.js	web-exact
+MATCH	games/site/morskoy-boy/play/assets/js/features.js	web-exact
+MATCH	games/site/morskoy-boy/play/assets/js/game-core.js	web-exact
+MATCH	games/site/morskoy-boy/play/assets/js/history.js	web-exact
+MATCH	games/site/morskoy-boy/play/assets/js/lan-client.js	web-exact
+MATCH	games/site/morskoy-boy/play/assets/js/ocean-3d.js	web-exact
+MATCH	games/site/morskoy-boy/play/assets/js/renderer.js	web-exact
+MATCH	games/site/morskoy-boy/play/assets/vendor/three.min.js	web-exact
+MATCH	games/site/morskoy-boy/play/bigmap/bigmap.css	web-exact
+MATCH	games/site/morskoy-boy/play/bigmap/bigmap.js	web-exact
+MATCH	games/site/morskoy-boy/play/bigmap/index.html	web-exact
+MATCH	games/site/morskoy-boy/play/index.html	web-exact
+MATCH	games/site/morskoy-boy/play/updates.json	web-exact
+MATCH	games/site/morskoy-boy/release.json	web-exact
+MATCH	games/site/tetris/index.html	web-exact
+MATCH	games/site/tetris/manifest.files.json	web-exact
+MATCH	games/site/tetris/play/assets/css/app.css	web-exact
+MATCH	games/site/tetris/play/assets/js/app.js	web-exact
+MATCH	games/site/tetris/play/assets/js/config.js	web-exact
+MATCH	games/site/tetris/play/index.html	web-exact
+MATCH	games/site/tetris/release.json	web-exact
 MATCH	portal/.gitignore	web-exact
 MATCH	portal/EXTERNAL-PROJECTS.txt	local-empty
 MATCH	portal/about/index.html	web-exact
@@ -37,33 +63,7 @@ MATCH	portal/status/index.html	web-exact
 MATCH	portal/sw.js	web-exact
 MATCH	portal/updates/feed.xml	web-exact
 MISS	games/site/morskoy-boy/downloads/latest/manifest.json	expected=ce74b88a799ace5db3738763ed4eed304267b46ebc98ebdde6fb9dcd6d653241:237; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/index.html	expected=4a1b9b9474f79691ce44bde18d1c44bfd74102c7c9fb607d43e3e6fdc2f13f79:6132; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/manifest.files.json	expected=f891bc0de800396695c9d694b3a2f1d35a841778173ff0ff07ba48ef72f2ff63:3076; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/assets/css/app.css	expected=19e8406ef2fc7afce6c1d77f6b12fdd9d9c27534c48c384dd94ba88fa1f5f1a5:28802; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/assets/css/archer-theme.css	expected=dfa41f71485a3fe4f4ad770bbf2cfef73d7cdfe479d020cfa78a75ec437812ca:9054; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/assets/css/features.css	expected=57ef7e35d959a86601a44cf83167fc2f763c55285d31d8eebe69d3bc307faebd:3376; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/assets/js/app.js	expected=3f4947f2cce01e86511922434ffad09625e30541cc630d3c99146050a1cd7409:43688; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/assets/js/features.js	expected=74fe9fb0878374efda680748c3a687ab2e05bd9166d85c0b41ab6e4eee0ab5a0:11572; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/assets/js/game-core.js	expected=dc5881a08687181507f57c862502f0fe0caea8a2ceae137ff4f18e8e8e4f1723:11131; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/assets/js/history.js	expected=3729b2b00d65416f04d64ffbea1ccf270ffb80ec395871a359d4c6b6d8129a65:3213; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/assets/js/lan-client.js	expected=4bd2b619e52fa91dbae8774acfc106b7096dc736070d4d54e20d4240f9c18d9a:6128; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/assets/js/ocean-3d.js	expected=717d083ec8f5dba72929217550009922e5f9a4eaa6dca581e84d9854d0f8a2ec:7312; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/assets/js/renderer.js	expected=79f859846a632d25ba4a10ac46f93245cc1c6cbc398db37fa3e884d03c55cf08:25907; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/assets/vendor/three.min.js	expected=170c6789f43217c96b3170f4b42fafe135de7f7cd48497a4218f9757ee1d49fa:669884; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/bigmap/bigmap.css	expected=dff85711b80c9a15f62ed3f454f2978c5585ec3a17f3742ac59bf5edca177495:2063; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/bigmap/bigmap.js	expected=68234ebf1a22504603cebc51dbad79b199aac125d59df44541c1248c6c7dfa3e:5934; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/bigmap/index.html	expected=1bf5a05039e0cbdc8a1395ed2b081e6e9a627a1db73327b8ba26c26de7e385f4:2573; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/index.html	expected=6b104d824fcc2b263f1fb59afcbc81ed3d730cc4b076902216a13ccb885fc308:18260; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/play/updates.json	expected=c6c2ef12079723bff6e19d311a81166017b52976af8c8182cf3d4512fc80b04c:219; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/morskoy-boy/release.json	expected=f3e92990a1dd0852896f4f248bfc04d72ea9abb68a5cd0534945a571147522a1:353; got=-:-; FETCH:HTTP Error 404: Not Found
 MISS	games/site/tetris/downloads/latest/manifest.json	expected=b0e7bb1cc3fb220047d5c1aedd5ad9af46dbba2f90c01e6d225cace49bf2a95b:222; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/tetris/index.html	expected=ebdd480914460eae8f4c3f01cd14a05581b37fb37b89573c0761a396768f0507:3996; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/tetris/manifest.files.json	expected=654ec42b981f16d471dea43416a13259c88118734b7cdd68133665652a219da6:1058; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/tetris/play/assets/css/app.css	expected=25d2f44baee803ba847927b81bd993d5061c09ef90b45bcf3574ab0ec8a1fa89:9122; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/tetris/play/assets/js/app.js	expected=b28eedad4297c7a2c9c1171755eda7cf06e9b23792cebe5e8a69e00ddc1c3159:20301; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/tetris/play/assets/js/config.js	expected=fa32b2957d6041e4be2295dfde8514a08647581574dbd845d6755d2c71175400:32; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/tetris/play/index.html	expected=53d1744148bcf335bb933c37126e6bba4e32e19fbd01133cac1beec7647665b6:8026; got=-:-; FETCH:HTTP Error 404: Not Found
-MISS	games/site/tetris/release.json	expected=3e14fd75feea1c59290f3796259e763970195cda3ac8b41fc591efdabced678d:254; got=-:-; FETCH:HTTP Error 404: Not Found
 MISS	portal/VERSION	expected=3cae3b181de64aae5c035555d706b5ccedd5e1a6c1bb7fb3f0ce7a56037cb61d:7; got=6d9c9b7df68c570c4ef8903a1a0533c68dc468f2d35ab9fb0ee1e8bb1bf87a19:8; MISMATCH
 MISS	portal/api/health.json	expected=95ef0ef38067fd55d4fcf2babca494c50cd96c6047c7e3c3d2cb3f0201b5b513:175; got=e366533fa52fdec8ed91137188087794317f76ae4dc0a627ff48fb66584c54d1:175; MISMATCH
 MISS	portal/api/releases.json	expected=09a74607b63dc001cb459d4fd5cfcd9b0af61e1524c9dbfd7a99103b7d2d90cb:2765; got=59c78d321370c624f0623b7533a508ee24857e8fc07537c187ae9d75107207fa:2679; MISMATCH

@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "component": "morskoy-boy",
+  "architecture": 2,
+  "version": "0.1.5.0",
+  "generatedAt": "2026-09-15T13:40:00+03:00",
+  "files": {
+    "games/morskoy-boy/index.html": {
+      "sha256": "4a1b9b9474f79691ce44bde18d1c44bfd74102c7c9fb607d43e3e6fdc2f13f79",
+      "bytes": 6132
+    },
+    "games/morskoy-boy/play/assets/css/app.css": {
+      "sha256": "19e8406ef2fc7afce6c1d77f6b12fdd9d9c27534c48c384dd94ba88fa1f5f1a5",
+      "bytes": 28802
+    },
+    "games/morskoy-boy/play/assets/css/archer-theme.css": {
+      "sha256": "dfa41f71485a3fe4f4ad770bbf2cfef73d7cdfe479d020cfa78a75ec437812ca",
+      "bytes": 9054
+    },
+    "games/morskoy-boy/play/assets/css/features.css": {
+      "sha256": "57ef7e35d959a86601a44cf83167fc2f763c55285d31d8eebe69d3bc307faebd",
+      "bytes": 3376
+    },
+    "games/morskoy-boy/play/assets/js/app.js": {
+      "sha256": "3f4947f2cce01e86511922434ffad09625e30541cc630d3c99146050a1cd7409",
+      "bytes": 43688
+    },
+    "games/morskoy-boy/play/assets/js/features.js": {
+      "sha256": "74fe9fb0878374efda680748c3a687ab2e05bd9166d85c0b41ab6e4eee0ab5a0",
+      "bytes": 11572
+    },
+    "games/morskoy-boy/play/assets/js/game-core.js": {
+      "sha256": "dc5881a08687181507f57c862502f0fe0caea8a2ceae137ff4f18e8e8e4f1723",
+      "bytes": 11131
+    },
+    "games/morskoy-boy/play/assets/js/history.js": {
+      "sha256": "3729b2b00d65416f04d64ffbea1ccf270ffb80ec395871a359d4c6b6d8129a65",
+      "bytes": 3213
+    },
+    "games/morskoy-boy/play/assets/js/lan-client.js": {
+      "sha256": "4bd2b619e52fa91dbae8774acfc106b7096dc736070d4d54e20d4240f9c18d9a",
+      "bytes": 6128
+    },
+    "games/morskoy-boy/play/assets/js/ocean-3d.js": {
+      "sha256": "717d083ec8f5dba72929217550009922e5f9a4eaa6dca581e84d9854d0f8a2ec",
+      "bytes": 7312
+    },
+    "games/morskoy-boy/play/assets/js/renderer.js": {
+      "sha256": "79f859846a632d25ba4a10ac46f93245cc1c6cbc398db37fa3e884d03c55cf08",
+      "bytes": 25907
+    },
+    "games/morskoy-boy/play/assets/vendor/three.min.js": {
+      "sha256": "170c6789f43217c96b3170f4b42fafe135de7f7cd48497a4218f9757ee1d49fa",
+      "bytes": 669884
+    },
+    "games/morskoy-boy/play/bigmap/bigmap.css": {
+      "sha256": "dff85711b80c9a15f62ed3f454f2978c5585ec3a17f3742ac59bf5edca177495",
+      "bytes": 2063
+    },
+    "games/morskoy-boy/play/bigmap/bigmap.js": {
+      "sha256": "68234ebf1a22504603cebc51dbad79b199aac125d59df44541c1248c6c7dfa3e",
+      "bytes": 5934
+    },
+    "games/morskoy-boy/play/bigmap/index.html": {
+      "sha256": "1bf5a05039e0cbdc8a1395ed2b081e6e9a627a1db73327b8ba26c26de7e385f4",
+      "bytes": 2573
+    },
+    "games/morskoy-boy/play/index.html": {
+      "sha256": "6b104d824fcc2b263f1fb59afcbc81ed3d730cc4b076902216a13ccb885fc308",
+      "bytes": 18260
+    },
+    "games/morskoy-boy/play/updates.json": {
+      "sha256": "c6c2ef12079723bff6e19d311a81166017b52976af8c8182cf3d4512fc80b04c",
+      "bytes": 219
+    },
+    "games/morskoy-boy/release.json": {
+      "sha256": "f3e92990a1dd0852896f4f248bfc04d72ea9abb68a5cd0534945a571147522a1",
+      "bytes": 353
+    }
+  }
+}
