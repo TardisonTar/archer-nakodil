@@ -1,0 +1,28 @@
+name: Check Archer source URLs
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/url-check.yml'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check candidate sources
+        shell: bash
+        run: |
+          set +e
+          for url in \
+            https://cq593645.tw1.ru/ \
+            https://dev.archer-nakodil.ru/ \
+            https://cq593645.tw1.ru/crec/ \
+            https://cq593645.tw1.ru/dom/
+          do
+            echo "=== $url ==="
+            curl -L --max-time 20 -sS -o /tmp/body -w "HTTP=%{http_code} FINAL=%{url_effective}\\n" "$url"
+            head -c 180 /tmp/body | tr '\n' ' '; echo
+            echo "VERSION:"
+            curl -L --max-time 15 -sS "$url""VERSION" | head -c 100; echo
+          done
