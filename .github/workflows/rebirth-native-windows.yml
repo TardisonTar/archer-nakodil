@@ -1,0 +1,83 @@
+name: Rebirth Native Windows
+
+on:
+  push:
+    branches:
+      - build/rebirth-native-0110
+    paths:
+      - '.github/workflows/rebirth-native-windows.yml'
+      - 'ci/rebirth/trigger'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout build branch
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Setup Godot .NET 4.7.2
+        uses: solarlabyrinth/action-setup-godot@v3
+        with:
+          version: 4.7.2-stable
+          csharp: true
+          export-templates: true
+
+      - name: Rehydrate native project
+        shell: bash
+        run: |
+          set -euxo pipefail
+          cat ci/rebirth/chunk_* > /tmp/rebirth.zip.b64
+          test "$(wc -c < /tmp/rebirth.zip.b64)" -eq 49404
+          echo "641dc59c3aa47fe6c22e667cf369fe71bcc68d9c55ee8660b3db7645938758fd  /tmp/rebirth.zip.b64" | sha256sum -c -
+          base64 -d /tmp/rebirth.zip.b64 > /tmp/rebirth.zip
+          echo "ace189e6c8476a0d596a4116eedf63798b5fe1c71981482a3f44d5967d675c2c  /tmp/rebirth.zip" | sha256sum -c -
+          rm -rf pc-native
+          mkdir -p /tmp/rebirth-work
+          unzip -q /tmp/rebirth.zip -d /tmp/rebirth-work
+          cp -a /tmp/rebirth-work/rebirth_ci_payload pc-native
+          test -f pc-native/project.godot
+          test -f pc-native/ProjectRebirth.csproj
+
+      - name: Restore C# dependencies
+        working-directory: pc-native
+        run: dotnet restore
+
+      - name: Compile native C#
+        working-directory: pc-native
+        run: dotnet build -c Release --no-restore
+
+      - name: Import Godot project
+        working-directory: pc-native
+        run: godot --headless --editor --path . --quit
+
+      - name: Export Windows x64
+        working-directory: pc-native
+        run: |
+          set -euxo pipefail
+          mkdir -p build/windows
+          godot --headless --path . --export-release "Windows Desktop" build/windows/ProjectRebirth.exe
+          test -f build/windows/ProjectRebirth.exe
+          ls -lah build/windows
+
+      - name: Create checksums
+        working-directory: pc-native/build/windows
+        run: |
+          sha256sum * > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+
+      - name: Upload Windows build
+        uses: actions/upload-artifact@v4
+        with:
+          name: Project-Rebirth-PC-NATIVE-WINDOWS
+          path: pc-native/build/windows/
+          if-no-files-found: error
+          compression-level: 6
