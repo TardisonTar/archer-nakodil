@@ -1,0 +1,38 @@
+name: Verify live Archer sources
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/source-hash-check.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hash current live files
+        shell: bash
+        run: |
+          set -u
+          check(){
+            url="$1"; expected="$2"; label="$3"
+            tmp="$(mktemp)"
+            if curl -fLsS --max-time 30 "$url" -o "$tmp"; then
+              got="$(sha256sum "$tmp" | awk '{print $1}')"
+              bytes="$(wc -c < "$tmp" | tr -d ' ')"
+              echo "$label bytes=$bytes got=$got expected=$expected match=$([ "$got" = "$expected" ] && echo YES || echo NO)"
+            else
+              echo "$label FETCH_FAILED"
+            fi
+            rm -f "$tmp"
+          }
+          check https://cq593645.tw1.ru/index.html 7ab50bc47b17d7f79306fc7024537fa76b38a0e8e204e4b9fb67ccf4b5c8c24b stable-index
+          check https://cq593645.tw1.ru/assets/css/brand.css 3dc243c4f7199295d864ee439ead2e16b49db3004af9f2a82952644b092327ed stable-brand
+          check https://cq593645.tw1.ru/assets/js/projects.js f0496bd7eaf7aa6c281a55fe30fa1c91c38199b501cb80581b3454f24c96d087 stable-projects-js
+          check https://cq593645.tw1.ru/assets/js/launcher.js 215f77be2dd3050460e28224d88d3d6d18a7695234ba73740a14f7e09d319a02 stable-launcher-js
+          check https://cq593645.tw1.ru/data/projects.json a90d4aeadd79fc0ee9ff8bebd06d850d93385a093be5110cc8cd8afbf6fc9f95 stable-projects-json
+          check https://cq593645.tw1.ru/games/morskoy-boy/play/index.html 6b104d824fcc2b263f1fb59afcbc81ed3d730cc4b076902216a13ccb885fc308 morskoy-index
+          check https://cq593645.tw1.ru/games/tetris/play/index.html 53d1744148bcf335bb933c37126e6bba4e32e19fbd01133cac1beec7647665b6 tetris-index
+          check https://cq593645.tw1.ru/dom/index.html 6c945b86ae5899faad00fe7305d54a36b5dd0c1c9ace86e9ebc3fcb92f6dd8d0 dom-index
+          check https://cq593645.tw1.ru/dom/assets/js/model.js ed91da05fc29d75fcf05d7ee377469516a45c2a9383a15b228891003868cc056 dom-model
+          check https://cq593645.tw1.ru/dom/assets/vendor/three.min.js 170c6789f43217c96b3170f4b42fafe135de7f7cd48497a4218f9757ee1d49fa dom-three
