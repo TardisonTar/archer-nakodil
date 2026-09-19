@@ -1,8 +1,0 @@
-{
-  "schema": 1,
-  "category": "stable",
-  "component": "morskoy-boy",
-  "version": "0.1.5.0",
-  "source": "Archer-Nakodil canonical game payload",
-  "status": "source-prepared-for-git"
-}

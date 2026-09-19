@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "component": "pixel-platformer",
+  "architecture": 2,
+  "version": "archived",
+  "generatedAt": "2026-09-15T04:30:00+03:00",
+  "files": {
+    "games/pixel-platformer/index.html": {
+      "sha256": "7cf9ce82fb39ea389c2340ae3434c382c7f6ef12a7782eaaebf42ef0855a1e5d",
+      "bytes": 4107
+    },
+    "games/pixel-platformer/release.json": {
+      "sha256": "4333c5c762014a6e813567f2d04e5bff92e0605f39123129f050d41406d5214b",
+      "bytes": 198
+    }
+  }
+}

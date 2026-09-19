@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "statuses": [
+    {"id":"idea","label":"Идея","order":10,"description":"Концепт без рабочей сборки."},
+    {"id":"development","label":"В разработке","order":20,"description":"Активная разработка."},
+    {"id":"alpha","label":"Alpha","order":30,"description":"Рабочий прототип, возможны крупные изменения."},
+    {"id":"beta","label":"Beta","order":40,"description":"Основные функции работают, проект дорабатывается."},
+    {"id":"stable","label":"Stable","order":50,"description":"Стабильный релиз для обычного использования."},
+    {"id":"archived","label":"Архив","order":90,"description":"Разработка остановлена, версия сохранена для истории."}
+  ]
+}

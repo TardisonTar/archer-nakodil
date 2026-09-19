@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "project": "pixel-platformer",
+  "status": "archived",
+  "version": null,
+  "playUrl": null,
+  "downloadUrl": null,
+  "architecture": 2,
+  "fileManifest": "manifest.files.json"
+}

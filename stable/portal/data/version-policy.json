@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "format": "0.x.y.z",
+  "regex": "^0\\.\\d+\\.\\d+\\.\\d+$",
+  "fixedLeadingZero": true,
+  "segments": {
+    "0": "pre-1.0 namespace",
+    "x": "generation/major line",
+    "y": "feature/minor line",
+    "z": "patch/hotfix"
+  },
+  "examples": [
+    "0.4.0.0",
+    "0.1.5.0",
+    "0.1.1.1"
+  ],
+  "note": "Build IDs, schema numbers and architecture numbers are not release versions."
+}

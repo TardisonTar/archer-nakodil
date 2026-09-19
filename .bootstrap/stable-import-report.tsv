@@ -1,0 +1,99 @@
+status	path	detail
+MATCH	portal/.gitignore	web-exact
+MATCH	portal/EXTERNAL-PROJECTS.txt	local-empty
+MATCH	portal/about/index.html	web-exact
+MATCH	portal/api/README.md	web-exact
+MATCH	portal/assets/css/brand.css	web-exact
+MATCH	portal/assets/css/launcher.css	web-exact
+MATCH	portal/assets/css/layout.css	web-exact
+MATCH	portal/assets/css/tokens.css	web-exact
+MATCH	portal/assets/icons/apple-touch-icon.png	web-exact
+MATCH	portal/assets/icons/brand-mark.svg	web-exact
+MATCH	portal/assets/icons/favicon.svg	web-exact
+MATCH	portal/assets/icons/pwa-192.png	web-exact
+MATCH	portal/assets/icons/pwa-512.png	web-exact
+MATCH	portal/assets/images/morskoy-boy.webp	web-exact
+MATCH	portal/assets/images/projects/archer-3d-constructor.svg	web-exact
+MATCH	portal/assets/images/projects/crec.svg	web-exact
+MATCH	portal/assets/images/projects/dom-svistka-3d.svg	web-exact
+MATCH	portal/assets/images/projects/pixel-platformer.svg	web-exact
+MATCH	portal/assets/images/projects/tetris.svg	web-exact
+MATCH	portal/assets/js/analytics.js	web-exact
+MATCH	portal/assets/js/pwa.js	web-exact
+MATCH	portal/assets/js/site.js	web-exact
+MATCH	portal/data/statuses.json	web-exact
+MATCH	portal/data/version-policy.json	web-exact
+MATCH	portal/external-link-pending/index.html	local-empty
+MATCH	portal/games/pixel-platformer/index.html	web-exact
+MATCH	portal/games/pixel-platformer/manifest.files.json	web-exact
+MATCH	portal/games/pixel-platformer/release.json	web-exact
+MATCH	portal/launcher/index.html	web-exact
+MATCH	portal/offline.html	web-exact
+MATCH	portal/projects/archer-3d-constructor/index.html	web-exact
+MATCH	portal/projects/archer-3d-constructor/manifest.files.json	web-exact
+MATCH	portal/projects/archer-3d-constructor/release.json	web-exact
+MATCH	portal/robots.txt	web-exact
+MATCH	portal/status/index.html	web-exact
+MATCH	portal/sw.js	web-exact
+MATCH	portal/updates/feed.xml	web-exact
+MISS	games/site/morskoy-boy/downloads/latest/manifest.json	expected=ce74b88a799ace5db3738763ed4eed304267b46ebc98ebdde6fb9dcd6d653241:237; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/index.html	expected=4a1b9b9474f79691ce44bde18d1c44bfd74102c7c9fb607d43e3e6fdc2f13f79:6132; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/manifest.files.json	expected=f891bc0de800396695c9d694b3a2f1d35a841778173ff0ff07ba48ef72f2ff63:3076; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/assets/css/app.css	expected=19e8406ef2fc7afce6c1d77f6b12fdd9d9c27534c48c384dd94ba88fa1f5f1a5:28802; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/assets/css/archer-theme.css	expected=dfa41f71485a3fe4f4ad770bbf2cfef73d7cdfe479d020cfa78a75ec437812ca:9054; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/assets/css/features.css	expected=57ef7e35d959a86601a44cf83167fc2f763c55285d31d8eebe69d3bc307faebd:3376; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/assets/js/app.js	expected=3f4947f2cce01e86511922434ffad09625e30541cc630d3c99146050a1cd7409:43688; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/assets/js/features.js	expected=74fe9fb0878374efda680748c3a687ab2e05bd9166d85c0b41ab6e4eee0ab5a0:11572; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/assets/js/game-core.js	expected=dc5881a08687181507f57c862502f0fe0caea8a2ceae137ff4f18e8e8e4f1723:11131; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/assets/js/history.js	expected=3729b2b00d65416f04d64ffbea1ccf270ffb80ec395871a359d4c6b6d8129a65:3213; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/assets/js/lan-client.js	expected=4bd2b619e52fa91dbae8774acfc106b7096dc736070d4d54e20d4240f9c18d9a:6128; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/assets/js/ocean-3d.js	expected=717d083ec8f5dba72929217550009922e5f9a4eaa6dca581e84d9854d0f8a2ec:7312; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/assets/js/renderer.js	expected=79f859846a632d25ba4a10ac46f93245cc1c6cbc398db37fa3e884d03c55cf08:25907; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/assets/vendor/three.min.js	expected=170c6789f43217c96b3170f4b42fafe135de7f7cd48497a4218f9757ee1d49fa:669884; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/bigmap/bigmap.css	expected=dff85711b80c9a15f62ed3f454f2978c5585ec3a17f3742ac59bf5edca177495:2063; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/bigmap/bigmap.js	expected=68234ebf1a22504603cebc51dbad79b199aac125d59df44541c1248c6c7dfa3e:5934; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/bigmap/index.html	expected=1bf5a05039e0cbdc8a1395ed2b081e6e9a627a1db73327b8ba26c26de7e385f4:2573; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/index.html	expected=6b104d824fcc2b263f1fb59afcbc81ed3d730cc4b076902216a13ccb885fc308:18260; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/play/updates.json	expected=c6c2ef12079723bff6e19d311a81166017b52976af8c8182cf3d4512fc80b04c:219; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/morskoy-boy/release.json	expected=f3e92990a1dd0852896f4f248bfc04d72ea9abb68a5cd0534945a571147522a1:353; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/tetris/downloads/latest/manifest.json	expected=b0e7bb1cc3fb220047d5c1aedd5ad9af46dbba2f90c01e6d225cace49bf2a95b:222; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/tetris/index.html	expected=ebdd480914460eae8f4c3f01cd14a05581b37fb37b89573c0761a396768f0507:3996; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/tetris/manifest.files.json	expected=654ec42b981f16d471dea43416a13259c88118734b7cdd68133665652a219da6:1058; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/tetris/play/assets/css/app.css	expected=25d2f44baee803ba847927b81bd993d5061c09ef90b45bcf3574ab0ec8a1fa89:9122; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/tetris/play/assets/js/app.js	expected=b28eedad4297c7a2c9c1171755eda7cf06e9b23792cebe5e8a69e00ddc1c3159:20301; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/tetris/play/assets/js/config.js	expected=fa32b2957d6041e4be2295dfde8514a08647581574dbd845d6755d2c71175400:32; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/tetris/play/index.html	expected=53d1744148bcf335bb933c37126e6bba4e32e19fbd01133cac1beec7647665b6:8026; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	games/site/tetris/release.json	expected=3e14fd75feea1c59290f3796259e763970195cda3ac8b41fc591efdabced678d:254; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	portal/VERSION	expected=3cae3b181de64aae5c035555d706b5ccedd5e1a6c1bb7fb3f0ce7a56037cb61d:7; got=6d9c9b7df68c570c4ef8903a1a0533c68dc468f2d35ab9fb0ee1e8bb1bf87a19:8; MISMATCH
+MISS	portal/api/health.json	expected=95ef0ef38067fd55d4fcf2babca494c50cd96c6047c7e3c3d2cb3f0201b5b513:175; got=e366533fa52fdec8ed91137188087794317f76ae4dc0a627ff48fb66584c54d1:175; MISMATCH
+MISS	portal/api/releases.json	expected=09a74607b63dc001cb459d4fd5cfcd9b0af61e1524c9dbfd7a99103b7d2d90cb:2765; got=59c78d321370c624f0623b7533a508ee24857e8fc07537c187ae9d75107207fa:2679; MISMATCH
+MISS	portal/assets/css/components.css	expected=a935fb53b932df9c3090239fa5985dabc07822d46833e525bf0d239ad1fa2f00:8874; got=280bdf1f5474e5e62a7d57f1d9f8364c65146163f8e49a789904e26df997c71f:11547; MISMATCH
+MISS	portal/assets/css/pages.css	expected=d70b38534bdc24a76079a9aa4f205d93d9c555502d3b021151302480ab3ed32f:953; got=72113bac0b84f64844d128aa39baef69c7df04fb5b1b7dbd7607047646f05a40:1043; MISMATCH
+MISS	portal/assets/js/downloads.js	expected=d944d4c8e1103d3316aa2f53f33e7f329a435d38d85dab1b90f296151f50599c:1278; got=26d19cbaa7250d95b76a67dd4c72d107813979818b8880f3d0d6dc5bf03c2f9a:1604; MISMATCH
+MISS	portal/assets/js/launcher.js	expected=215f77be2dd3050460e28224d88d3d6d18a7695234ba73740a14f7e09d319a02:4900; got=c34a24bc29e320824cbe2b5a6df1016df36731c93438f89e775a8e079f789f85:4843; MISMATCH
+MISS	portal/assets/js/projects.js	expected=f0496bd7eaf7aa6c281a55fe30fa1c91c38199b501cb80581b3454f24c96d087:3457; got=77b7ab832b1fd3f0cd126a0e9234bd7d026f863f12a100a0ed7ee2d75894ac0f:3489; MISMATCH
+MISS	portal/assets/js/releases.js	expected=9315acff46d59f32a22b2e578263239085d04aaa88642af06f2efcdb1d646b34:1495; got=4e8ea41aee9fcc6919d7acbbbde36fffa6aa3e606637f0658f5a35b3decce5ee:1436; MISMATCH
+MISS	portal/assets/js/updates.js	expected=9f14fcdf8a50a41a68cf80a23acf58ad4fae630c95213ca762896e512d20ab5b:2569; got=b02a5ed6746848aac84f6ab206c156f9a85af70adb7a7ec1398a79b087450077:3435; MISMATCH
+MISS	portal/assets/js/versions.js	expected=ef7d0d2095c0d2e434cf8ceae31a6919d361e8964561751cd38e0e386d48dbee:2226; got=c884c6e4e2fc5ab87d07df0f2dafbfef954a359fd1faee6926ac5454c6886a85:2284; MISMATCH
+MISS	portal/catalog/crec/index.html	expected=80a2b80a38fe70e3725c974c7568e6055359a33a114e3d1badd940c79f0c8a5b:6592; got=bcb696d421c9797265d7ffbf5058e2eb66dbcd2236e2cdc584c8a147d4aa284d:6524; MISMATCH
+MISS	portal/catalog/dom-svistka-3d/index.html	expected=f1d335d2fbd9ee2c8a7e7c79fd504605335390d4cdd954e2a5e03b9d1b7b8e4e:6886; got=7195aca74cfb441c27cffd72b44e5f5c39e66be201a83a13895b119552308d4d:6765; MISMATCH
+MISS	portal/catalog/morskoy-boy/index.html	expected=dc37ce0d7558d6d1231f61ca486199d9471e6533d82e2bdf60a82c570a884c56:6880; got=3c0fffd5f4a76a135ee70034fa50aa88b5c273e26eff44f1946bdfd4f17a2deb:6962; MISMATCH
+MISS	portal/catalog/tetris/index.html	expected=25e03e17e6b40465456e22380dad54009990298ce171eb8b0439df1b97da09bb:6117; got=256182f9732b802bb6a3bc9e65bedf8d907d16e1d6683107adfa9acefd288148:6204; MISMATCH
+MISS	portal/data/architecture.json	expected=1c2d46b8ecbc8a5a0129b69bc8a83e92fe9db6d0175ff04cb53d6c76b38c41ad:796; got=5c6611c41ec4e27f6bcfe63d9d289db324d357023817d55e967fc21cd5e78b58:842; MISMATCH
+MISS	portal/data/files-manifest.json	expected=65e593c0f99a7d475207a1eebb7bb05f4af5b4caac978b86b583508b717d186b:9288; got=23537357698a644068a4d25f1de45fc622db90fe6cbb873f6b23f50984f10196:9278; MISMATCH
+MISS	portal/data/projects.json	expected=a90d4aeadd79fc0ee9ff8bebd06d850d93385a093be5110cc8cd8afbf6fc9f95:10661; got=863d2582438b7d9b4b4aa4f6ec3163f55ed2629202236dd94d6bbf8dd723a8b0:10424; MISMATCH
+MISS	portal/data/releases.json	expected=80ca957256d6cf4967d5ebb42b84c7f469070679561acb2db1b1ef749c3c48a8:5107; got=1cec21755d34d80e7b7dcfdfab2896b2971a3d2b4184d50f4c462c9e8c06246f:4196; MISMATCH
+MISS	portal/data/site.json	expected=03c4178d448c53949bee98c48272758f2d5f496224f4bc65e072ace313e9457c:1096; got=1a6c6fefbe485f26754081fa5df1b989d28844ed985c42e4c647a0b80959533d:479; MISMATCH
+MISS	portal/data/updates.json	expected=192935732905dbfc12ce471839791719da8612be5191bcf860ffe4fc8cd954f7:11121; got=7d64a3831046ae21c3d0f3c4b1fef46fd5ca2574ff83c0381fa4a4330c536428:12374; MISMATCH
+MISS	portal/downloads/crec/index.html	expected=ff9732b648d99559bab9ff30d8538837480952470ccb644d360e5071af5f06fc:3876; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	portal/downloads/dom-svistka-3d/index.html	expected=127a2a3cb3486e417d4d60bc45bfb30dbc44924d563a643ea59a02562b19c551:3941; got=-:-; FETCH:HTTP Error 404: Not Found
+MISS	portal/downloads/index.html	expected=cb80b5f196efbdbfe43076e5ae470311ec0f97090d9b9c836de8558a9c8ed726:3184; got=e7f36b05d86744702c71caf3f32fab859bdfe1eb6e61cbe2665fa58c1d126719:3003; MISMATCH
+MISS	portal/downloads/morskoy-boy/index.html	expected=a8cb42fd88de5b919cca1fdeb85840d2fd65ceacd94202173ac3e28e029cae1b:3914; got=16cebfb0e1d2b2a2200ea4399cf224da30b671a674c9baea22183b0e5b013a78:3916; MISMATCH
+MISS	portal/downloads/tetris/index.html	expected=538bdead10ce02a7a89a493be1a4712518b29ff50b8b0d796a5eb2a0765bc5db:3854; got=16592c35e2b80eaa4ee62b671e97721c44536aa17714663d2ca9bb23de90d9f2:3856; MISMATCH
+MISS	portal/games/index.html	expected=129f73de1bb982c2fcdff9ba84e3f19c632492a8603cd2060236de03213ee4b9:3278; got=51800ef04c4361358d23ff7404e3a05a0133bfef86353f36ffcfe0c039358d4c:2780; MISMATCH
+MISS	portal/index.html	expected=7ab50bc47b17d7f79306fc7024537fa76b38a0e8e204e4b9fb67ccf4b5c8c24b:5483; got=8744dc6629ec73c23fd574e2d1bcf59f7eba7d9be6466e911f9c0b6a32de18f7:6671; MISMATCH
+MISS	portal/manifest.webmanifest	expected=5e24dda096e37610f1bf42730cff9a25f6e9f37b88b78c797473e8efe876be4b:1339; got=0f36843d00cc257876b6c3b10b48c93ad812949e298c2d3252d1a5e0d59d7e9f:1333; MISMATCH
+MISS	portal/projects/index.html	expected=5748643165a7d48b26434c13c4a1748b9913c0a446c219813077a1422e3bcb36:5099; got=39596944008ed3074c38d43c2f302423347f5ac3d98880ba3d66ef697a89af01:3548; MISMATCH
+MISS	portal/release.json	expected=1cc7b4115d4aef06a7e4b6968029bfcef86a91ba6b0d0108a12f959ddd6a53ef:1027; got=ae90108c150c0798e83b3f4a9dc49b124aaf777f7b2e216bb25f618b02482b43:894; MISMATCH
+MISS	portal/sitemap.xml	expected=feefa1637ce8cbf02172f0dc48da00601babe907381bc4a11958202cb93cfd8f:1288; got=2fbed00501bd1c2ba4b7a5fc6bdd5e39f0bc6bf45a48ad0ae9defd917e31e58f:1146; MISMATCH
+MISS	portal/updates/index.html	expected=298b2e89499213924b56629deaddb85fbdc1da9b1e80f62721c27b433adfbeda:3601; got=b5077618913baf3121b8f815795c4a5093babd69dd9f6b800a60e93eff909d87:3620; MISMATCH

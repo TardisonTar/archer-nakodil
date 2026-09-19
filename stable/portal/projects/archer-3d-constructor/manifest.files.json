@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "component": "archer-3d-constructor",
+  "architecture": 2,
+  "version": "idea-stub",
+  "generatedAt": "2026-09-15T04:30:00+03:00",
+  "files": {
+    "projects/archer-3d-constructor/index.html": {
+      "sha256": "4f709eae51373984a677fffccb81b540363b0e69e327807068fd8f9efa5401d7",
+      "bytes": 2270
+    },
+    "projects/archer-3d-constructor/release.json": {
+      "sha256": "3d7ed99b74dcfd3a1c586e232d26e353d1ecc5b1f868d852d8fbf004cc0e2dc2",
+      "bytes": 184
+    }
+  }
+}
