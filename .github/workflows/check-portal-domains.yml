@@ -1,0 +1,33 @@
+name: Check Archer portal domains
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/check-portal-domains.yml'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check portal candidates
+        shell: bash
+        run: |
+          set +e
+          for url in \
+            https://archer-nakodil.ru/ \
+            https://www.archer-nakodil.ru/ \
+            https://archer-nakodil.online/ \
+            https://test.archer-nakodil.ru/ \
+            https://dev.archer-nakodil.ru/ \
+            https://beta.archer-nakodil.ru/
+          do
+            echo "=== $url ==="
+            curl -L --max-time 15 -sS -o /tmp/body -w 'HTTP=%{http_code} FINAL=%{url_effective} SIZE=%{size_download}\n' "$url"
+            head -c 300 /tmp/body | tr '\n' ' '; echo
+            for p in assets/css/brand.css assets/js/projects.js games/morskoy-boy/play/index.html games/tetris/play/index.html; do
+              code=$(curl -L --max-time 12 -sS -o /tmp/x -w '%{http_code}' "$url$p")
+              bytes=$(wc -c < /tmp/x 2>/dev/null || echo 0)
+              echo "$p HTTP=$code BYTES=$bytes"
+            done
+          done
