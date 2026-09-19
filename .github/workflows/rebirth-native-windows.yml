@@ -85,3 +85,23 @@ jobs:
           path: pc-native/build/windows/
           if-no-files-found: error
           compression-level: 6
+
+  smoke-windows:
+    needs: build
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download native Windows build
+        uses: actions/download-artifact@v4
+        with:
+          name: Project-Rebirth-PC-NATIVE-WINDOWS
+          path: native
+
+      - name: Verify PE and launch headless
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          if (-not (Test-Path "native\ProjectRebirth.exe")) { throw "ProjectRebirth.exe missing" }
+          Get-Item "native\ProjectRebirth.exe" | Format-List Name,Length,FullName
+          & "native\ProjectRebirth.exe" --headless --quit-after 120
+          if ($LASTEXITCODE -ne 0) { throw "ProjectRebirth.exe exited with code $LASTEXITCODE" }
