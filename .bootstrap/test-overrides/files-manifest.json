@@ -1,0 +1,265 @@
+{
+  "schema": 1,
+  "component": "portal",
+  "architecture": 2,
+  "version": "0.3.1.0",
+  "generatedAt": "2026-09-18T18:25:00+03:00",
+  "files": {
+    ".gitignore": {
+      "sha256": "5659e6e1db57bac67c52e4d22a3ee2b8e540a51df225db9d101bae6fa6e81f32",
+      "bytes": 73
+    },
+    "VERSION": {
+      "sha256": "3cae3b181de64aae5c035555d706b5ccedd5e1a6c1bb7fb3f0ce7a56037cb61d",
+      "bytes": 7
+    },
+    "about/index.html": {
+      "sha256": "22be59bb41a0a9f36617d77a9c996dff4024903c5029359b108c90ef7b48ddb5",
+      "bytes": 4234
+    },
+    "api/README.md": {
+      "sha256": "2373ab65c1db859eb817a5de490f3f6e29d0c186b70bcc4f4d078a8dfefb8318",
+      "bytes": 618
+    },
+    "api/health.json": {
+      "sha256": "95ef0ef38067fd55d4fcf2babca494c50cd96c6047c7e3c3d2cb3f0201b5b513",
+      "bytes": 175
+    },
+    "api/releases.json": {
+      "sha256": "09a74607b63dc001cb459d4fd5cfcd9b0af61e1524c9dbfd7a99103b7d2d90cb",
+      "bytes": 2765
+    },
+    "assets/css/brand.css": {
+      "sha256": "55731e51adc72154e797f08eb18c6d1ab3dd4ad47143ba0b75155760d91e8847",
+      "bytes": 2575
+    },
+    "assets/css/components.css": {
+      "sha256": "280bdf1f5474e5e62a7d57f1d9f8364c65146163f8e49a789904e26df997c71f",
+      "bytes": 11547
+    },
+    "assets/css/launcher.css": {
+      "sha256": "cca4158f54431941f8d0938481fd1c2e128669a49e0c0bf4c10a6079c240cf03",
+      "bytes": 1968
+    },
+    "assets/css/layout.css": {
+      "sha256": "fa31072b62e62432068f2d48a20c29d04daf808773813476c575ae111aa55737",
+      "bytes": 4431
+    },
+    "assets/css/pages.css": {
+      "sha256": "72113bac0b84f64844d128aa39baef69c7df04fb5b1b7dbd7607047646f05a40",
+      "bytes": 1043
+    },
+    "assets/css/tokens.css": {
+      "sha256": "4c31192a5960116b55d9a398bc780222eabc46e5998140b40e5637f01da5afa4",
+      "bytes": 1222
+    },
+    "assets/icons/apple-touch-icon.png": {
+      "sha256": "2f821b5f9b1ca377871543f13516d026e140499500cfe47f568c345707cf617a",
+      "bytes": 838
+    },
+    "assets/icons/brand-mark.svg": {
+      "sha256": "2fd475a149578489f0097c062b3cd9e5bde02c8bd50ef3d200b8dcfe843a5f5b",
+      "bytes": 261
+    },
+    "assets/icons/favicon.svg": {
+      "sha256": "6896d4830818f49048d0d8bc6884d7b32a2c7bd4937846f4e25cc08d1e5a4bc1",
+      "bytes": 268
+    },
+    "assets/icons/pwa-192.png": {
+      "sha256": "cccf88e9f50d551acfb177b2049ba3e0b57d7ce8d896dcb84c48ff8d988e70a1",
+      "bytes": 890
+    },
+    "assets/icons/pwa-512.png": {
+      "sha256": "2181c8cf0a4bf178308c85441bffcdff0426a417084d7ff19b34603a90c700ab",
+      "bytes": 2472
+    },
+    "assets/images/morskoy-boy.webp": {
+      "sha256": "63660f4521b29850f7272848329d916b8e1c983bd8c81000f43e2d9511535350",
+      "bytes": 123808
+    },
+    "assets/images/projects/archer-3d-constructor.svg": {
+      "sha256": "0f05efcc8c96f392b2586a26da8e5b80e2639b3c87c43a79a8adc5909bc74382",
+      "bytes": 550
+    },
+    "assets/images/projects/crec.svg": {
+      "sha256": "d05b5625f79ee161e02b9cb8ef32fbec124df80fcae86afc55722ebef5bf2d0e",
+      "bytes": 635
+    },
+    "assets/images/projects/dom-svistka-3d.svg": {
+      "sha256": "d339866af4b460f74c617ca89a621e8ca48ebfedaa6bfa485b7d331a4d151e01",
+      "bytes": 733
+    },
+    "assets/images/projects/pixel-platformer.svg": {
+      "sha256": "e12c45389a6c98a29f009e26802798e214d31fdb5943178e37db7d485f919cce",
+      "bytes": 853
+    },
+    "assets/images/projects/tetris.svg": {
+      "sha256": "a697742e69c9c56057cd1f1346ff57764b505e6977383198ff5acea45c8b2300",
+      "bytes": 737
+    },
+    "assets/js/analytics.js": {
+      "sha256": "e7799b0fc3b3c03ced209274f44472d7d2f2c7a927c32344e98dd91589bba0f7",
+      "bytes": 1140
+    },
+    "assets/js/dashboard.js": {
+      "sha256": "cfa517590309a29811275c2ef151c83dd40fce575468362bbe40d20c07ba6d6b",
+      "bytes": 1518
+    },
+    "assets/js/downloads.js": {
+      "sha256": "26d19cbaa7250d95b76a67dd4c72d107813979818b8880f3d0d6dc5bf03c2f9a",
+      "bytes": 1604
+    },
+    "assets/js/launcher.js": {
+      "sha256": "215f77be2dd3050460e28224d88d3d6d18a7695234ba73740a14f7e09d319a02",
+      "bytes": 4900
+    },
+    "assets/js/projects.js": {
+      "sha256": "f0496bd7eaf7aa6c281a55fe30fa1c91c38199b501cb80581b3454f24c96d087",
+      "bytes": 3457
+    },
+    "assets/js/pwa.js": {
+      "sha256": "441808e611db91833c28245799af748d89aee8a1f045c568c2043a6f452dee82",
+      "bytes": 762
+    },
+    "assets/js/releases.js": {
+      "sha256": "9315acff46d59f32a22b2e578263239085d04aaa88642af06f2efcdb1d646b34",
+      "bytes": 1495
+    },
+    "assets/js/site.js": {
+      "sha256": "b5606416cb443b0c9861fbfd90112a9ff67a97aeb2c64a9397b830be7a84703e",
+      "bytes": 650
+    },
+    "assets/js/updates.js": {
+      "sha256": "b02a5ed6746848aac84f6ab206c156f9a85af70adb7a7ec1398a79b087450077",
+      "bytes": 3435
+    },
+    "assets/js/versions.js": {
+      "sha256": "ef7d0d2095c0d2e434cf8ceae31a6919d361e8964561751cd38e0e386d48dbee",
+      "bytes": 2226
+    },
+    "catalog/archer-3d-constructor/index.html": {
+      "sha256": "bc0357248f6a4ef3f1c69f343ffe64ee051b71c99790c7c31300e896a6316139",
+      "bytes": 6337
+    },
+    "catalog/crec/index.html": {
+      "sha256": "80a2b80a38fe70e3725c974c7568e6055359a33a114e3d1badd940c79f0c8a5b",
+      "bytes": 6592
+    },
+    "catalog/dom-svistka-3d/index.html": {
+      "sha256": "f1d335d2fbd9ee2c8a7e7c79fd504605335390d4cdd954e2a5e03b9d1b7b8e4e",
+      "bytes": 6886
+    },
+    "catalog/morskoy-boy/index.html": {
+      "sha256": "dc37ce0d7558d6d1231f61ca486199d9471e6533d82e2bdf60a82c570a884c56",
+      "bytes": 6880
+    },
+    "catalog/pixel-platformer/index.html": {
+      "sha256": "3e8a03999977c629b47abec29d4cd0877e0b6b273702c2d947875bed2afe0d7f",
+      "bytes": 6263
+    },
+    "catalog/tetris/index.html": {
+      "sha256": "25e03e17e6b40465456e22380dad54009990298ce171eb8b0439df1b97da09bb",
+      "bytes": 6117
+    },
+    "data/architecture.json": {
+      "sha256": "1c2d46b8ecbc8a5a0129b69bc8a83e92fe9db6d0175ff04cb53d6c76b38c41ad",
+      "bytes": 796
+    },
+    "data/projects.json": {
+      "sha256": "a90d4aeadd79fc0ee9ff8bebd06d850d93385a093be5110cc8cd8afbf6fc9f95",
+      "bytes": 10661
+    },
+    "data/releases.json": {
+      "sha256": "80ca957256d6cf4967d5ebb42b84c7f469070679561acb2db1b1ef749c3c48a8",
+      "bytes": 5107
+    },
+    "data/site.json": {
+      "sha256": "03c4178d448c53949bee98c48272758f2d5f496224f4bc65e072ace313e9457c",
+      "bytes": 1096
+    },
+    "data/statuses.json": {
+      "sha256": "db1fed58d6b7c63e46f7af001911073f58bf32b73ea6bc05d788146de58ab4c7",
+      "bytes": 902
+    },
+    "data/updates.json": {
+      "sha256": "7d64a3831046ae21c3d0f3c4b1fef46fd5ca2574ff83c0381fa4a4330c536428",
+      "bytes": 12374
+    },
+    "data/version-policy.json": {
+      "sha256": "45b8173ce875a322d288fd82bba4f1606fb2d438dd9e06ab36d640633c7ba38f",
+      "bytes": 403
+    },
+    "downloads/crec/index.html": {
+      "sha256": "ff9732b648d99559bab9ff30d8538837480952470ccb644d360e5071af5f06fc",
+      "bytes": 3876
+    },
+    "downloads/dom-svistka-3d/index.html": {
+      "sha256": "127a2a3cb3486e417d4d60bc45bfb30dbc44924d563a643ea59a02562b19c551",
+      "bytes": 3941
+    },
+    "downloads/index.html": {
+      "sha256": "e7f36b05d86744702c71caf3f32fab859bdfe1eb6e61cbe2665fa58c1d126719",
+      "bytes": 3003
+    },
+    "downloads/morskoy-boy/index.html": {
+      "sha256": "a8cb42fd88de5b919cca1fdeb85840d2fd65ceacd94202173ac3e28e029cae1b",
+      "bytes": 3914
+    },
+    "downloads/tetris/index.html": {
+      "sha256": "538bdead10ce02a7a89a493be1a4712518b29ff50b8b0d796a5eb2a0765bc5db",
+      "bytes": 3854
+    },
+    "games/index.html": {
+      "sha256": "51800ef04c4361358d23ff7404e3a05a0133bfef86353f36ffcfe0c039358d4c",
+      "bytes": 2780
+    },
+    "index.html": {
+      "sha256": "094a6f73f8a36e2aea8458ace92202357bf1e9c2ea8da8ee9b71d7dcb9a268c7",
+      "bytes": 6671
+    },
+    "launcher/index.html": {
+      "sha256": "90534b314344d0d84685828cb567b0fa5a1e58a3ced1ee7714d750018fbf205e",
+      "bytes": 4378
+    },
+    "manifest.webmanifest": {
+      "sha256": "5e24dda096e37610f1bf42730cff9a25f6e9f37b88b78c797473e8efe876be4b",
+      "bytes": 1339
+    },
+    "offline.html": {
+      "sha256": "c961bba7f1e56ca920b5fdf8506b4e7131cd8835d688dfceec0b9ed92a459620",
+      "bytes": 1297
+    },
+    "projects/index.html": {
+      "sha256": "39596944008ed3074c38d43c2f302423347f5ac3d98880ba3d66ef697a89af01",
+      "bytes": 3548
+    },
+    "release.json": {
+      "sha256": "1cc7b4115d4aef06a7e4b6968029bfcef86a91ba6b0d0108a12f959ddd6a53ef",
+      "bytes": 1027
+    },
+    "robots.txt": {
+      "sha256": "6a041038c9ee1151b9fb3b4abcfd73c19254921fa05f295cdef466c1c29bb8a5",
+      "bytes": 70
+    },
+    "sitemap.xml": {
+      "sha256": "feefa1637ce8cbf02172f0dc48da00601babe907381bc4a11958202cb93cfd8f",
+      "bytes": 1288
+    },
+    "status/index.html": {
+      "sha256": "679a1c52114f68747c66e5aeeb01f49dc3e2f9ddbf6c16309434ac11079b8d0d",
+      "bytes": 3031
+    },
+    "sw.js": {
+      "sha256": "940964b4dea89c54bdc2a020252eb84fc8788d9e932b7ece6ad1e9325c25df7d",
+      "bytes": 2165
+    },
+    "updates/feed.xml": {
+      "sha256": "4323a01242d22adb6274acb203fb180ee262ff253ad42813949a908a07541641",
+      "bytes": 10318
+    },
+    "updates/index.html": {
+      "sha256": "b5077618913baf3121b8f815795c4a5093babd69dd9f6b800a60e93eff909d87",
+      "bytes": 3620
+    }
+  }
+}
