@@ -1,0 +1,39 @@
+name: Rebirth Native Windows Smoke
+
+on:
+  push:
+    branches:
+      - build/rebirth-native-0110
+    paths:
+      - '.github/workflows/rebirth-native-smoke.yml'
+
+jobs:
+  smoke:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - name: Download successful native artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: Project-Rebirth-PC-NATIVE-WINDOWS
+          path: native
+          github-token: ${{ github.token }}
+          repository: TardisonTar/archer-nakodil
+          run-id: 35476880699
+
+      - name: Launch native exe headless
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $exe = (Resolve-Path "native\ProjectRebirth.exe").Path
+          Get-Item $exe | Format-List Name,Length,FullName
+          $stdout = Join-Path $PWD "godot-stdout.log"
+          $stderr = Join-Path $PWD "godot-stderr.log"
+          $p = Start-Process -FilePath $exe -ArgumentList @("--headless","--quit-after","120") -Wait -PassThru -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+          if (Test-Path $stdout) { Get-Content $stdout }
+          if (Test-Path $stderr) { Get-Content $stderr }
+          Write-Host "Native process exit code: $($p.ExitCode)"
+          if ($p.ExitCode -ne 0) { throw "ProjectRebirth.exe exited with code $($p.ExitCode)" }
