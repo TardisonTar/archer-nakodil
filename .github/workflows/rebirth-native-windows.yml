@@ -47,6 +47,7 @@ jobs:
           cp ci/rebirth/patches/Entities.cs pc-native/Scripts/Gameplay/Entities.cs
           cp ci/rebirth/patches/FactionSystem.cs pc-native/Scripts/Gameplay/FactionSystem.cs
           cp ci/rebirth/patches/Models.cs pc-native/Scripts/Data/Models.cs
+          cp ci/rebirth/patches/RoadDataLoader.cs pc-native/Scripts/World/RoadDataLoader.cs
           test -f pc-native/project.godot
           test -f pc-native/ProjectRebirth.csproj
 
