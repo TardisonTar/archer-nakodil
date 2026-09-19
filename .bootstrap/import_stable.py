@@ -28,6 +28,8 @@ for line in manifest.read_text(encoding="utf-8").splitlines():
         continue
     if rel.startswith("portal/"):
         remote = rel[len("portal/"):]
+    elif rel.startswith("games/site/"):
+        remote = "games/" + rel[len("games/site/"):]
     else:
         remote = rel
     # Empty intentionally-local markers are not expected to be public web resources.
