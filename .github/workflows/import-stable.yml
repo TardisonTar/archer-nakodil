@@ -25,5 +25,7 @@ jobs:
           git add -A stable .bootstrap/stable-import-report.tsv
           if ! git diff --cached --quiet; then
             git commit -m "import: load exact stable 0.4.1.3 sources"
+            git fetch origin main
+            git rebase origin/main
             git push
           fi
