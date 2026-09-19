@@ -26,4 +26,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A svistok
           git commit -m "import: load Svistok CREC 0.1.3.9 and Dom 0.0.9.0"
+          git fetch origin main
+          git rebase origin/main
           git push
