@@ -1,0 +1,133 @@
+name: Bootstrap Archer projects
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.bootstrap/READY'
+
+permissions:
+  contents: write
+
+jobs:
+  import-projects:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Restore project sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .bootstrap/import.part*.b64 | base64 -d > /tmp/archer-import.tar.gz
+          echo "5561ad572a468c6b2134d2c65f485f1e028658f5b4f432061ac2e9e172a027bc  /tmp/archer-import.tar.gz" | sha256sum -c -
+          tar -xzf /tmp/archer-import.tar.gz -C .
+
+      - name: Commit project sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add stable test svistok IMPORT-MANIFEST.json
+          if ! git diff --cached --quiet; then
+            git commit -m "import: load Archer project sources"
+            git push
+          fi
+
+      - name: Hydrate CREC binary assets
+        id: crec_assets
+        continue-on-error: true
+        env:
+          CREC_BASE: https://cq593645.tw1.ru/crec/
+          EXPECTED_CREC_VERSION: 0.1.3.9
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+          from urllib.parse import urljoin
+          from concurrent.futures import ThreadPoolExecutor, as_completed
+          import os, re, sys
+
+          root=Path('svistok/crec')
+          base=os.environ['CREC_BASE']
+          expected=os.environ['EXPECTED_CREC_VERSION']
+
+          def get(url, timeout=30):
+              req=Request(url, headers={'User-Agent':'Archer-GitHub-Migration/1.0'})
+              with urlopen(req, timeout=timeout) as r:
+                  return r.read()
+
+          live_version=get(urljoin(base,'VERSION')).decode('utf-8','replace').strip()
+          if live_version != expected:
+              raise SystemExit(f'CREC version mismatch: live={live_version!r}, expected={expected!r}')
+
+          refs=set()
+          pattern=re.compile(r'(?<![A-Za-z0-9_-])/?(images/[A-Za-z0-9._/-]+)')
+          for p in root.rglob('*'):
+              if not p.is_file():
+                  continue
+              try:
+                  s=p.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              for ref in pattern.findall(s):
+                  if Path(ref).suffix.lower() in {'.webp','.png','.jpg','.jpeg','.gif','.svg','.avif'}:
+                      refs.add(ref)
+
+          refs.update({
+              'images/hero/hero-connectors-ba1957412b.webp',
+              'images/hero/hero-power-supply-f991c4102e.webp',
+              'images/hero/hero-soldering-ac33507f55.webp',
+              'images/misc/reference-aa2be5cac1.webp',
+              'icon-192.png',
+              'icon-512.png',
+          })
+
+          errors=[]
+          def fetch_one(rel):
+              data=get(urljoin(base,rel))
+              dst=root/rel
+              dst.parent.mkdir(parents=True, exist_ok=True)
+              dst.write_bytes(data)
+              return rel, len(data)
+
+          total=0
+          with ThreadPoolExecutor(max_workers=16) as ex:
+              futs={ex.submit(fetch_one,r):r for r in sorted(refs)}
+              for i,f in enumerate(as_completed(futs),1):
+                  rel=futs[f]
+                  try:
+                      _,n=f.result()
+                      total += n
+                  except Exception as e:
+                      errors.append((rel,str(e)))
+                  if i % 250 == 0:
+                      print(f'downloaded {i}/{len(futs)} refs')
+
+          print(f'CREC asset refs={len(refs)} bytes={total} errors={len(errors)}')
+          if errors:
+              for rel,e in errors[:30]:
+                  print('ERROR',rel,e)
+              raise SystemExit(2)
+          if len(refs) < 3200:
+              raise SystemExit(f'Unexpectedly low asset count: {len(refs)}')
+          PY
+
+      - name: Commit CREC assets
+        if: steps.crec_assets.outcome == 'success'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add svistok/crec/images svistok/crec/icon-192.png svistok/crec/icon-512.png
+          if ! git diff --cached --quiet; then
+            git commit -m "import: hydrate CREC binary assets"
+            git push
+          fi
