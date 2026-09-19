@@ -1,0 +1,44 @@
+name: Mirror stable to TEST
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'stable/**'
+permissions:
+  contents: write
+jobs:
+  build-test:
+    if: github.actor == 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Build TEST from Stable plus exact overrides
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf test/portal test/games
+          cp -a stable/portal test/portal
+          cp -a stable/games test/games
+          cp .bootstrap/test-overrides/brand.css test/portal/assets/css/brand.css
+          cp .bootstrap/test-overrides/index.html test/portal/index.html
+          cp .bootstrap/test-overrides/files-manifest.json test/portal/data/files-manifest.json
+      - name: Verify TEST override hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "55731e51adc72154e797f08eb18c6d1ab3dd4ad47143ba0b75155760d91e8847  test/portal/assets/css/brand.css" | sha256sum -c -
+          echo "094a6f73f8a36e2aea8458ace92202357bf1e9c2ea8da8ee9b71d7dcb9a268c7  test/portal/index.html" | sha256sum -c -
+          echo "ae88ba2dd4d7fb7f2464f02f004d4df9ba3b9b00c7642cc95dcd9e135afa8285  test/portal/data/files-manifest.json" | sha256sum -c -
+      - name: Commit TEST
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A test
+          if ! git diff --cached --quiet; then
+            git commit -m "import: mirror stable sources to TEST with TEST overrides"
+            git push
+          fi
