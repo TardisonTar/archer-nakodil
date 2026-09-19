@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "category": "test",
+  "component": "tetris",
+  "version": "0.1.0.0",
+  "source": "Archer-Nakodil canonical game payload",
+  "status": "source-prepared-for-git"
+}
