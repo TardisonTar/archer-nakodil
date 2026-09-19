@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/import-svistok.yml'
+      - '.bootstrap/import_svistok.py'
 
 permissions:
   contents: write
